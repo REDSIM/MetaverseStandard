@@ -11,6 +11,7 @@
 - **Permissions** protect sensitive data or actions.
 - A Manifest declaration is only the maximum an application may request. It is not a Permission Grant.
 - Missing optional Features use fallbacks. Denied Permissions remain denied without breaking unrelated behavior.
+- Retrieving a file, preparing executable content, and starting a device-dependent mode are different operations. A missing camera or controller is not a platform-wide download ban.
 
 ## Canonical Distinctions
 
@@ -31,15 +32,16 @@ The last term is for implementers. Ordinary user-facing documentation can simply
 A Release declares:
 
 - required Client Profiles.
-- required Features and minimum Limits.
+- required decoding and execution Features and minimum Limits for each content path.
 - optional Features.
+- device-dependent modes and the Input Signals or presentation Features they use.
 - variants selected by Features or Limits.
 - a fallback for each optional path.
 - an explanation when no safe fallback exists.
 
 The Client evaluates a bounded, verified Manifest and any needed dependency Manifests before downloading or expanding heavy content, compiling shaders, or starting untrusted behavior:
 
-1. Check schema and Profile versions, supported formats, required Features, and minimum Limits.
+1. Check schema and Profile versions, supported formats, required decoding and execution Features, and minimum Limits.
 2. Find complete compatible paths through the declared [Resource Variants: One Release, Optional Variants](../Concepts/Resource%20Model.md) and fallbacks.
 3. Select a path within local memory, download, and execution budgets. Quality and energy preferences may influence the choice.
 4. Fetch and validate only the selected files and dependencies. Actual decoded sizes and workloads are checked again. Declarations are not proof.
@@ -48,6 +50,24 @@ The Client evaluates a bounded, verified Manifest and any needed dependency Mani
 The future selection specification needs exact requirement matching, alternative grouping, dependency rules, and failure reasons. Clients may choose different quality levels while agreeing on which paths are compatible.
 
 Feature names are versioned and registered. An unknown required Feature makes the affected path incompatible. Launch is blocked only if no complete compatible path remains. Unknown optional Features are treated as unsupported.
+
+### Retrieval, preparation, and device-dependent modes
+
+An absent AR display, camera, eye tracker, controller, or other peripheral does not make Resource files invalid or impose a standard-wide prohibition on downloading them. Hosts still apply their ordinary authentication and access rules. Clients still control download, storage, safety, and resource budgets.
+
+Keep three decisions separate:
+
+| Operation | What is checked |
+| --- | --- |
+| Retrieve or retain files | Access rules, integrity, storage, network, and local policy. Files may be saved without being executable on this Client |
+| Decode and execute a selected content path | Supported formats, behavior interfaces, declared requirements, and safe resource use |
+| Start an AR, tracking, or other device-dependent mode | Current availability, user approval, focus, and the requirements of that mode |
+
+A Client may avoid unnecessary downloads by default, warn about unavailable modes, or offer a user-requested archive download. That is not a protocol rule requiring a server to refuse content because a device is missing. Retaining unsupported bytes never authorizes their decoding or execution.
+
+World code can run its compatible base path, inspect the permitted runtime state, and choose a flat view, another input method, a waiting screen, or a clear explanation that its main function cannot currently operate. The standard does not demand that every creator implement every fallback. A Client may apply stricter local launch policy, but distinguishes policy restrictions from invalid files or incompatible code.
+
+Requirements for a mode apply when entering that mode, not automatically to all World content. For example, a supported World can wait for an AR device to be connected without pretending AR is already available. Missing a required decoder or behavior interface is different: scripts cannot repair a content path that cannot safely start. These distinctions refine the Manifest selection contract rather than removing preflight validation.
 
 ### Optional service assistance
 
@@ -59,7 +79,18 @@ Hardware model, driver version, full Client version, and native graphics API are
 
 ### Runtime adaptation
 
-Behavior may query the standardized Feature and Limit view to reduce quality or disable optional effects. It can react to changing budgets and device availability through the host API. Every newly loaded content path is checked before use. Runtime adaptation does not replace preflight and cannot rescue an unsupported format or memory exhaustion during initial loading.
+Behavior receives a permission-filtered snapshot and change notifications through the host API, rather than relying only on an initial handshake. The view distinguishes:
+
+- implemented Features and current Limits.
+- currently available, disconnected, busy, or lost-tracking sources where disclosure is allowed.
+- whether access has been approved, denied, revoked, or is not yet requested.
+- currently routed Input Signals and input focus.
+
+A supported API does not mean that suitable hardware is connected. A connected device does not mean that an application has permission to use it. No available input is a valid state, not a malformed World. Privacy-filtered absence does not prove that a physical device is absent.
+
+Worlds may switch between controllers, hand tracking, keyboard, touch, assistive input, custom devices, or a no-input presentation as those sources change. The host supplies coherent state changes and invalidates lost handles. Code also handles failure between a query and an attempted operation. A one-time snapshot never guarantees continued access.
+
+Detailed device metadata and custom channels follow [Devices and Input](./Devices%20and%20Input.md). Worlds do not receive an unrestricted inventory of hardware merely to choose controls. Every newly loaded content path is checked before use. Runtime adaptation does not replace preflight and cannot rescue an unsupported format or memory exhaustion during initial loading.
 
 ## Permission Flow
 
@@ -122,6 +153,7 @@ The registry will likely need separate entries for:
 - spatial mesh, planes, anchors, depth, and room boundaries.
 - selected files and application storage.
 - clipboard and local application integration.
+- selected External App Bridge peers, incoming channels, outgoing data, and permitted actions.
 - network destinations, local-network discovery, Bluetooth, and nearby devices.
 - location and environmental sensors.
 - Profile fields, Account Claims, contacts, friends, private messages, social actions, and Entitlements.
@@ -135,6 +167,8 @@ Ordinary connections to authenticated World Services named by the publication ma
 Supporting a transport is a Feature, not approval to contact any address. The [Network Broker](./Networking.md) applies destination, credential, and lifecycle rules equally to standard and custom protocols. A transport handshake does not grant access to tracking, voice, identity, or World state.
 
 A firewall or antivirus may add protection, but does not replace these Client checks. It generally cannot distinguish the principals and grants inside one Client process. Clients may differ in presentation and apply stricter policy, not omit the shared isolation and authorization boundary.
+
+[External App Bridge pairing](./Software%20Integration.md) approves a software peer, not every World that might consume its data. Hardware pairing, software pairing, and application access are distinct approvals. Routing data to external software is also an outgoing data path under the processing and export rules below.
 
 ## Cameras and Tracking
 

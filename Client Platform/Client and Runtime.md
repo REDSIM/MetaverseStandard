@@ -29,6 +29,8 @@ Parsers, media decoders, shader compilers, discovery, networking, and content st
 
 The [Network Broker](./Networking.md) exposes versioned binary I/O to sandboxed behavior. A World can implement custom application networking without replacing the broker or inheriting operating-system socket access. Replication and reconciliation remain application logic, not mandatory algorithms in the Client Core.
 
+[Devices and Input](./Devices%20and%20Input.md) covers physical peripherals and their adapters. [Software Integration](./Software%20Integration.md) separately covers user-paired external programs. Both cross Client-controlled boundaries. An external process is not an Overlay App and does not acquire device or World authority merely by connecting.
+
 ## Startup and Navigation
 
 The Client's startup and navigation experience is described in [Finding Worlds](../Concepts/Finding%20Worlds.md). Address entry, Profile selection, saved Collections, and recovery controls remain available without a working home World. Their layout is a Client design choice, not a requirement to implement one standard menu.
@@ -131,7 +133,17 @@ The access categories remain separate:
 - **camera access**: receive frames from a selected supported camera.
 - **geolocation**: receive an approved location estimate and its accuracy, not necessarily GPS data.
 
-The Manifest declares required and optional Features and Permissions for the intended path. The Client checks availability and obtains scoped approval where needed, reusing matching grants rather than prompting per frame. A World requesting only presentation receives no implicit camera, room-scan, or location access. An existing grant does not make an unavailable or OS-restricted sensor accessible.
+The Manifest declares required and optional Features and Permissions for the intended path. The Client checks availability when entering a device-dependent mode and obtains scoped approval where needed, reusing matching grants rather than prompting per frame. A World requesting only presentation receives no implicit camera, room-scan, or location access. An existing grant does not make an unavailable or OS-restricted sensor accessible.
+
+Missing AR hardware does not create a standard-wide ban on retrieving the World. A compatible base path can inspect current input and presentation availability, wait for a device, or offer another mode. File retrieval, code compatibility, and live device access follow [Features and Permissions: Retrieval, preparation, and device-dependent modes](./Features%20and%20Permissions.md).
+
+### Dynamically composed AR content
+
+An AR World may load independently published [Items](../Concepts/Items%20and%20Ownership.md), including fixed signs, dashboards, or holograms that cannot be picked up or added to an inventory. Its developer chooses discovery, placement, streaming, removal, and third-party service integration. Ordinary application data may also drive World-created scene objects without making each update a new Item Release.
+
+This does not require a universal spatial-service discovery or scene-composition protocol. The common platform supplies safe loading, sandboxing, scoped interfaces, and lifecycle boundaries. Dynamically imported code does not inherit the host World's grants or bypass validation.
+
+An Item integrated by a World remains subject to that World's integration rules. A user-controlled tool that exists independently of that World instead fits the [Overlay App](../Concepts/Overlay%20Apps.md) model. Supporting both does not require all independent applications to share one scene or coordinate system.
 
 ### Persistent placement
 
@@ -151,7 +163,7 @@ Camera images, room geometry, persistent place references, and location can reve
 
 Tracking loss, recentering, failed anchor restoration, permission revocation, and changes of foreground World need explicit state changes. Unreliable placement is hidden or visibly marked rather than presented as accurate. Background capture follows the ordinary grant and lifecycle policy. Switching Worlds does not silently transfer sensors or spatial maps to the next World.
 
-Missing optional support may use manual placement, a flat view, or a non-AR mode where the creator provides one. If the physical-environment function is essential, the Client explains incompatibility or denied access. It does not silently substitute a more intrusive sensor. Trusted emergency exit and available device safety boundaries remain outside World control.
+Missing optional support may use manual placement, a flat view, or a non-AR mode where the creator provides one. If the physical-environment function is essential, that mode waits or reports unavailable or denied access without being presented as operational. Client policy may restrict activation, but a missing sensor does not itself invalidate downloaded content. The Client does not silently substitute a more intrusive sensor. Trusted emergency exit and available device safety boundaries remain outside World control.
 
 For example, a shared desk World may save notes and synchronize their contents while using approved surface placement. It requests raw images only for a separate feature that actually needs them. If it cannot find yesterday's desk position, it retains the notes and asks for placement again. This is an illustrative application flow, not a required AR implementation.
 

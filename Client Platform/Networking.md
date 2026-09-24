@@ -18,6 +18,8 @@ Transport freedom applies to application networking, not to making every Client 
 
 This page describes the safe building blocks used by World protocols and their optional shared Session Profiles. A chosen platform service or Session Profile still needs concrete compatible bindings. No universal gameplay protocol is implied.
 
+[Software Integration](./Software%20Integration.md) defines a separate optional External App Bridge profile for programs outside the Client. Its proposed WebTransport binding does not make WebTransport compulsory for Worlds. Physical device adapters remain a different boundary in [Devices and Input](./Devices%20and%20Input.md).
+
 ## Four Separate Layers
 
 | Layer | Responsibility | Who defines it? |

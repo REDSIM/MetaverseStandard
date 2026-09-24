@@ -50,6 +50,8 @@ Server-assisted selection is optional. A service returns a reference to a declar
 
 This leaves hosting simple: static file storage is sufficient, while specialized services may optimize delivery without becoming the compatibility authority. Standard addressing, metadata, retrieval, and error contracts are still needed. “Static” does not mean that every host invents a different bootstrap API.
 
+Missing cameras, controllers, or AR presentation does not impose a standard-wide ban on retrieving these files. A Client may retain an authorized archive or load a compatible base path while a device-dependent mode remains unavailable. Download policy, safe decoding and execution, and current device access are separate checks in [Features and Permissions](../Client%20Platform/Features%20and%20Permissions.md).
+
 ## Download Sources and Regional Preferences
 
 The Client may offer **Automatic** download routing or a preferred service region. This chooses where files come from, not which World session the user joins. A nearby content source and a distant session are a valid combination.

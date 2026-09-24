@@ -21,16 +21,20 @@
 - Worlds, Avatars, Items, and Overlay Apps share a common publication and delivery model.
 - A Release may provide one portable path or optional Resource Variants. No mandatory desktop/mobile build split is imposed.
 - Clients select compatible content from verified Manifests before heavy loading or code execution. Server assistance is optional and cannot override local validation.
+- File retrieval, safe content preparation, and device-dependent mode entry are separate decisions. Missing AR hardware, cameras, or controllers does not impose a platform-wide download ban. Worlds observe permission-filtered runtime availability and change events.
 - Custom graphics use a versioned portable profile with Client-side preparation for the local API. Exact languages and toolchains remain candidates.
 - Avatars and Items may contain code that runs in self-scoped Resource Sandboxes and reaches World state only through validated interfaces.
+- Items may be fixed or dynamically loaded content without pickup or inventory support. World developers choose discovery feeds and composition logic. Imported Releases retain their own validation and authority boundaries.
 - AR experiences are ordinary Worlds using optional presentation and spatial Features. Common access contracts are needed, but environment-mapping, persistence strategy, and multiplayer alignment remain implementation choices.
 - Message Relay and Resource Relay are independent session roles. One provider may implement both.
 - Providers for identity, content, discovery, relays, sessions, and moderation are replaceable.
 - [Architecture Overview](../Architecture%20Overview.md) separates portable data, local execution boundaries, network roles, and their operators. Independence means explicit contracts, not one mandatory process per role or automatic live migration.
 - Direct World Addresses work independently of search. No global catalogue, single home World, or domain per World is required.
 - Personal Profiles and saved content have explicit visibility controls. Shared references do not transfer Resource access or ownership.
+- Real-world identity, age, and unique-human checks are not prerequisites of the core or federated account model. Providers may layer them externally and Worlds set their own admission rules. Generic optional Claims do not create a universal verification authority or tracking identifier.
 - Independent stores may offer sources, Portable Archives, service access, or combinations, with explicit rights and dependencies. No universal purchase-proof gate, copy-protection guarantee, or blockchain is required.
 - A Client may run as an ordinary application or eventually as a device’s primary system shell.
+- Physical peripherals use extensible device interfaces and scoped metadata. External software connects through a separate optional External App Bridge, with pairing and per-application access kept distinct.
 - The architecture supports both simple hosted Worlds and custom authoritative services.
 - Networking exposes safe binary I/O, not one mandatory realtime transport or application protocol. Optional Session Profiles define shared interoperability contracts.
 - Platform retrieval and supported directory, account, and social roles use shared Client-native contracts, separate from custom gameplay protocols.
@@ -67,18 +71,18 @@ These recommendations refine the original idea where a direct implementation wou
 | D-002 | World Address, deep links, and resolver behavior | Domain-based paths or provider-supplied addresses, independent Resource identity, signed resolution, and offline form. Exact syntax remains open | Critical |
 | D-003 | Application Principal and publisher security epoch | Resource ID + verified publisher lineage + epoch | Critical |
 | D-004 | Manifest encoding, Release ID, signatures, variants, and Publication Record | Evaluate strict readable [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) + [JCS](https://www.rfc-editor.org/rfc/rfc8785.html), with detached signature binding without self-reference, hash-bound files and variants, and pinned dependencies | Critical |
-| D-005 | Core 3D Client Profile, Features, Limits, selection, and fallbacks | Manifest-first local selection with optional minimal service negotiation and a baseline drawn from prototype limits | Critical |
+| D-005 | Core 3D Client Profile, Features, Limits, selection, and fallbacks | Manifest-first decoding/execution checks, separate device-dependent mode requirements, and a permission-filtered runtime snapshot with change events. File retrieval does not require live peripherals | Critical |
 | D-006 | World scene and component model | A defined glTF subset and component binding, with optional OpenUSD authoring and no mandatory visual/collision separation | Critical |
 | D-007 | Behavior component ABI and host lifecycle | WebAssembly Component Model + versioned WIT interfaces, without ambient general [WASI](https://wasi.dev/) | Critical |
 | D-008 | Permission registry, prompt rules, grants, updates, and revocation | Declared maximum + runtime request + scoped handles, with device selection and capture/export boundaries. Expanded declarations need a new Release. Live amendments remain open | Critical |
 | D-009 | Optional Session Profiles, descriptors, service roles, messages, and Transport Bindings | Shared contracts where chosen and custom protocols over the same broker API, without a universal realtime transport | High |
-| D-010 | Account ID method, migration, recovery, Claims, social graph, and multi-presence invitations | A guest/pairwise base with person-directed Join Requests and session-specific Invitations. Test [AT Protocol](https://atproto.com/specs/atp) ideas without inheriting public repository assumptions | High |
+| D-010 | Account ID method, migration, recovery, Claims, social graph, and multi-presence invitations | A guest/pairwise base with person-directed Join Requests and session-specific Invitations. Keep real-world checking processes external. Optional Claim formats need scoped disclosure, issuer semantics, privacy and failure tests, not a universal verified flag. Test [AT Protocol](https://atproto.com/specs/atp) ideas without inheriting public repository assumptions | High |
 | D-011 | Avatar Core, Humanoid Rig, and Avatar Behavior host API | Prototype a [VRM 1.0](https://vrm.dev/en/vrm1/)-compatible subset plus the common Resource Sandbox | High |
 | D-012 | Resource Relay upload, admission, cache, privacy levels, and routing policy | Remote-host fetch and participant upload through one cached relay protocol, with a stronger optional two-party mode | High |
 | D-013 | Baseline renderer, portable shader representation, parameter ABI, and compilation | Start with glTF PBR and Client-side preparation. Evaluate constrained [WGSL](https://www.w3.org/TR/WGSL/) and Slang with backend conformance evidence | Medium |
-| D-014 | Item attachment, Resource Behavior, World integration, and persistent state | Start with common self-scoped behavior and keep issuer state separate from files. Use the shared commerce model in D-027 | Medium |
+| D-014 | Item placement, dynamic loading, Resource Behavior, World integration, and persistent state | Include fixed content and independent pickup/inventory options. Define checked activation, replacement, and unload while keeping feeds/composition developer-defined and issuer state separate from files. Use D-027 for commerce | Medium |
 | D-015 | Overlay App portable UI and World integration | Client-framed panel plus typed context interface | Medium |
-| D-016 | Device signal registry and Adapter packaging | Semantic Broker API over existing transports | Medium |
+| D-016 | Device signals, descriptors, live state, output safety, and Adapter packaging | Extensible semantic Broker API over existing transports, scoped vendor metadata and custom channels, hotplug and validity events, and safe output limits. Software peers belong to D-029 | Medium |
 | D-017 | Moderation feeds, labels, cross-provider block, and reporting | Local controls first, followed by signed provider feeds | Medium |
 | D-018 | Governance, registries, extension admission, and certification | Multiple implementations plus open test evidence | Critical before ratification |
 | D-019 | Directory search, indexing, discovery metadata, reviews, and reputation | Replaceable directories with public listings and optional content descriptions. Deeper indexing is optional, and restricted results are access-checked | Medium |
@@ -91,6 +95,7 @@ These recommendations refine the original idea where a direct implementation wou
 | D-026 | Optional source and session-region preferences | Independent coarse preferences and discoverable choices, with fixed hosts still valid. Routing and allocation stay provider-defined. Exact metadata and region naming remain open | Medium |
 | D-027 | Commerce offers, Entitlements, Portable Archives, and restoration | Separate deliverables, rights, and service dependencies. Offer optional detached proofs or scoped online checks under chosen issuer trust. Schemas, extensible claims, holder binding, recovery, revocation, account changes, and transfer remain open | Medium |
 | D-028 | AR presentation, spatial interfaces, and persistent placement | Use the ordinary World model with separate composition, camera, spatial data, and geolocation access. Exact reference-space, tracking-loss, anchor, storage, and sharing contracts remain open. No universal mapping or alignment algorithm is imposed | Medium |
+| D-029 | External App Bridge protocol, pairing, schemas, routing, and local acceleration | Prototype WebTransport over HTTP/3, Protobuf control messages, and compact binary sample channels. Pin a tested binding revision. Define secure bootstrap, certificate handling, revocation, truthful fallback, and optional native IPC/shared-memory semantics before acceptance | Medium |
 
 ## Current Concept Pass
 
@@ -103,6 +108,8 @@ Continue from user journeys and service responsibilities before choosing exact s
 5. **Use a World in physical surroundings:** [AR presentation: XR and Passthrough](../Client%20Platform/Client%20and%20Runtime.md) reuses World behavior, storage, and networking. Distinguish saved content, physical placement, and shared-space alignment without prescribing one AR implementation.
 
 The technical deliverables below are a later implementation track, not a demand to freeze formats during this concept pass.
+
+The hardware and software clarifications are documented in [Devices and Input](../Client%20Platform/Devices%20and%20Input.md) and [Software Integration](../Client%20Platform/Software%20Integration.md). Their exact event ordering, descriptors, wire layouts, codec limits, key lifecycle, and performance targets remain specifications to write and test, not completed standards.
 
 ## Next Concrete Specifications
 
@@ -171,6 +178,8 @@ Prove that two independent Clients can:
 - Item appearance, attachment, Resource Behavior, and integration levels.
 - Client-framed Overlay Apps.
 - Device Broker signals and adapters.
+- dynamic device availability, selected-device metadata, custom channels, and bounded output operations.
+- optional External App Bridge with native and browser-app interoperability, scoped multi-World routing, and measured high-rate data transfer.
 - optional AR presentation and spatial interfaces, with permission, tracking-loss, anchor-restoration, and shared-alignment failure tests.
 - custom raster graphics profile.
 - richer World Services and persistent state.

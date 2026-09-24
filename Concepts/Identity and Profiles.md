@@ -12,6 +12,7 @@
 - Federated Account Providers authenticate users and may offer synchronization, recovery, or additional services. Friends, reputation, and Entitlements need not share one operator.
 - Worlds receive the minimum identity needed for a session, not automatically the user’s stable Account ID.
 - Display names and Avatars are presentation. They never prove identity by themselves.
+- Real-world identity and age checks are not conditions of protocol compatibility. Providers may offer them separately, and Worlds choose their own admission policies.
 
 ## Core Terms
 
@@ -29,11 +30,11 @@ A person may control several Account IDs, and one account may contain several Pr
 
 [Collections and Sharing](./Collections%20and%20Sharing.md) defines the common personal data model: Profile information, friends, saved Worlds, Avatar and Item collections, audiences, and extensible records. These are metadata and relationships, not necessarily hosted copies of the underlying Resources.
 
-## Three Ways to Enter
+## Identity Presentation Options
 
 ### Guest
 
-The Client creates a local Profile and a fresh Participant ID. No Account Provider is required. Remote content hosts or session services may still be contacted. The World may limit features that require persistence or abuse prevention.
+The Client creates a local Profile and a fresh Participant ID. No Account Provider is required. Remote content hosts or session services may still be contacted. A World may limit features or refuse admission under its own published policy. Supporting guest identity does not require every World to admit guests.
 
 ### Pairwise
 
@@ -73,6 +74,42 @@ The eventual protocol should define separate keys or credentials for:
 - emergency recovery and key rotation.
 
 Clients should support phishing-resistant authentication where available. Recovery must not let a compromised provider silently rewrite identity history for different observers. How this consistency is achieved is an open protocol decision.
+
+## Identity and Age Checks Are External Policies
+
+A compatible Profile does not need a legal name, identity document, verified age, biometrics, or proof that it belongs to one unique human. Neither the core platform nor the federated account model makes these checks a prerequisite. There is no mandatory verification provider, universal verified-person registry, or one-account-per-person rule.
+
+Three different questions should remain separate:
+
+| Question | What it establishes |
+| --- | --- |
+| Account authentication | The caller controls credentials accepted for this account |
+| Identity or age checking | A provider has assessed a particular real-world assertion using its own process |
+| World admission | The destination accepts the information presented under its own policy |
+
+Successful sign-in is not proof of a person's legal identity, age, or uniqueness. A Profile field supplied by its user is not equivalent to an issuer-backed Claim. A valid signature identifies a statement's issuer and protects its integrity, but does not establish the statement's truth or make that issuer universally trusted.
+
+### Provider and World responsibilities
+
+An Account Provider may implement checks through its registration website or an external service. Another provider may offer accounts without those checks. Verification methods, evidence collection, eligibility thresholds, retention, and applicable legal obligations belong to those deployments, not to the metaverse protocol. Delegating a check does not make the standard a compliance certification or decide which obligations apply to each operator.
+
+A World chooses what it needs and which issuers or evidence it accepts. It may admit an ordinary pseudonymous Profile, restrict a particular feature, or require a specific confirmation for entry. These choices do not become network-wide rules, and self-hosted or unchecked Profiles are not inherently incompatible or malicious.
+
+Supporting an external check does not require every Client or provider to implement its workflow. If the required extension is unavailable, the Client explains that this destination's condition cannot be met. It does not silently enroll the user in a verification service or collect evidence on the World's behalf.
+
+### Optional Claims and disclosure
+
+The standard can provide generic extension and consent boundaries for optional Claims without defining how to verify real-world identity or age. There is no single global `verified` flag. Any supported confirmation needs a defined meaning, issuer, scope, and validity conditions, so a World can interpret exactly what is being asserted. Exact Claim formats and presentation protocols remain open.
+
+For example, where suitable for the service's obligations, a World could receive confirmation that its age threshold is met rather than a birth date or identity document. The check and underlying evidence remain with the chosen verification service, not in public Profile fields or a replicated account repository. An Account Provider may help deliver the confirmation without receiving the original documents itself. This is a deployment example, not a mandated age-checking method.
+
+The Client shows the requested information and recipient before disclosure. Sharing a Claim with one World does not publish it to friends, other Worlds, or the public Profile. A reusable credential, stable subject identifier, or per-visit query to an issuer can still link activity across Worlds. Optional integrations need to assess these leaks and minimize them, not claim anonymity merely because a proof is signed.
+
+### Missing information and failure
+
+No disclosed Claim means only that the destination has not received that evidence. It does not prove that the user is underage, dishonest, or unverified elsewhere. Missing or withheld information, an unsupported format, an unaccepted issuer, an expired proof, an invalid proof, and a service outage are distinct outcomes. None automatically establishes the opposite of the requested assertion. An accepted Claim explicitly stating that a criterion is not met is a different result.
+
+A World can refuse access when its condition has not been established, without declaring the Profile invalid throughout the ecosystem. Detailed rejection reasons are not automatically disclosed to other participants. An outage is not permission to fabricate a successful check or silently weaken that World's rule. The user may decline disclosure and use another eligible service. Local safety controls remain available regardless of verification status.
 
 ## Standard Account and Social Operations
 
@@ -138,8 +175,9 @@ An Account Provider may make data available, but the Client remains the local po
 
 ## Current Proposals
 
-- Require guest and pairwise participation in the base identity model.
+- Support guest and pairwise participation in the base identity model without imposing guest admission on every World.
 - Make federated accounts an optional profile layered above local presence.
+- Keep identity and age-checking processes outside the protocol. Optional Claim exchange does not introduce mandatory checks or a universal trust authority.
 - Borrow design lessons from [decentralized identifiers](https://www.w3.org/TR/did/), [WebAuthn](https://www.w3.org/TR/webauthn-2/)/passkeys, [OAuth](https://www.rfc-editor.org/rfc/rfc6749.html)-style scoped authorization, and [AT Protocol](https://atproto.com/guides/identity).
 - Avoid placing all private account data in a publicly replicated repository.
 

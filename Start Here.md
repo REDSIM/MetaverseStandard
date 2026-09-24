@@ -20,7 +20,7 @@ This vault currently describes a **concept architecture**, not a finished specif
 | **World** | A portable interactive application or space. It may run alone or connect to online session services. |
 | **Profile** | A chosen identity presentation: name, picture, and selected information, with visibility controls. It can be local or linked to a federated account. Avatar choice is separate and may differ by World. |
 | **Avatar** | Portable visual representation of a participant. |
-| **Item** | Portable content that may be displayed, held, placed, or attached where a World permits it. |
+| **Item** | Portable content integrated into a World, including fixed signs and dynamically loaded panels. Pickup, movement, and inventory membership are optional. |
 | **Overlay App** | A user-installed application that can appear across Worlds, such as a media panel or accessibility tool. |
 | **Release** | One immutable published version of a World, Avatar, Item, or Overlay App. |
 | **Collection** | A personal list of saved Worlds, Avatars, Items, or other Resources, shared only with the chosen audience. |
@@ -29,6 +29,10 @@ This vault currently describes a **concept architecture**, not a finished specif
 The website/browser analogy is useful, but incomplete. A World can contain real-time 3D content, executable behavior, multiplayer state, sensors, and user-generated objects. That makes isolation, permissions, performance limits, and graceful fallbacks central to the design.
 
 An [AR World: XR and Passthrough](./Client%20Platform/Client%20and%20Runtime.md) can place virtual content in the physical surroundings using approved Client interfaces. Its interaction, persistence, and multiplayer logic remain ordinary World behavior. AR does not introduce another Resource Type or automatic camera access.
+
+Worlds may dynamically load Items or generate scene objects from external data. Discovery, feeds, placement, and composition remain developer choices, not a required universal service. An independent user-controlled tool can instead be an Overlay App.
+
+Worlds receive a permission-filtered, changing view of available input and device functions. Missing AR hardware or a controller does not impose a platform-wide download ban. Safe content preparation, entering a device-dependent mode, and granting access remain separate decisions. Physical peripherals use [device interfaces](./Client%20Platform/Devices%20and%20Input.md), while external programs connect through the optional [External App Bridge](./Client%20Platform/Software%20Integration.md).
 
 Like a web application, a World may choose its own backend and application protocol. The Client supplies safe [networking interfaces](./Client%20Platform/Networking.md). Optional shared Session Profiles make common online functions easier to reuse. No single realtime transport or reconciliation algorithm is imposed on all Worlds.
 
@@ -56,7 +60,7 @@ No global directory or domain per World is required. [Finding Worlds](./Concepts
 
 1. The user or another application gives the Client a **World Address**.
 2. The Client resolves that address to a signed publication and an immutable Release.
-3. The Client reads the verified Manifest and checks required [Features, Limits, and Client Profiles](./Client%20Platform/Features%20and%20Permissions.md) before downloading heavy content.
+3. The Client reads the verified Manifest and checks decoding and execution [Features, Limits, and Client Profiles](./Client%20Platform/Features%20and%20Permissions.md) before preparing heavy content. Live device availability is checked separately when a mode needs it.
 4. It selects compatible content and optional [Resource Variants](./Concepts/Resource%20Model.md), then downloads only the selected files and dependencies and verifies their hashes.
 5. The Client validates untrusted files and starts World behavior inside an isolated runtime.
 6. The Client checks declared [Permissions](./Client%20Platform/Features%20and%20Permissions.md) when needed, reusing valid grants and asking only when a new user decision is required.
@@ -79,7 +83,7 @@ See [Security and Privacy](./Trust/Security%20and%20Privacy.md) for the full bou
 ## Core Principles
 
 1. **Open implementation.** Anyone can build a Client or host compatible content and services.
-2. **No mandatory central account.** Guest use and local Profiles remain possible. Federated accounts add portability and synchronization.
+2. **No mandatory central account or real-world verification.** Guest use and local Profiles remain possible. Federated accounts add portability and synchronization. Identity and age checks are external service choices, not protocol prerequisites. Individual Worlds retain their own admission policies. See [Identity and Profiles: Identity and Age Checks Are External Policies](./Concepts/Identity%20and%20Profiles.md).
 3. **Secure by default.** Downloaded code starts with no ambient device, file, identity, or network access.
 4. **Portable core, optional depth.** A small baseline works widely. Richer Client Profiles add XR, advanced graphics, devices, and other features.
 5. **Predictable fallback.** Missing optional features reduce quality or functionality instead of causing a crash.
@@ -144,6 +148,7 @@ All unresolved choices are tracked in [Open Decisions and Roadmap](./Reference/O
 - [Publishing and Delivery](./Concepts/Publishing%20and%20Delivery.md): hosting, mirrors, integrity, and private retrieval.
 - [Message Relay](./Concepts/Message%20Relay.md) and [Resource Relay](./Concepts/Resource%20Relay.md): realtime session messages and participant-content delivery.
 - [Graphics and Shaders](./Client%20Platform/Graphics%20and%20Shaders.md) and [Devices and Input](./Client%20Platform/Devices%20and%20Input.md): deeper platform systems.
+- [Software Integration](./Client%20Platform/Software%20Integration.md): pairing external programs, scoped channels, and high-rate binary data.
 
 ### Review trust and interoperability
 

@@ -17,7 +17,7 @@
 
 ### Protecting the user
 
-The local Client Core and operating system are trusted to isolate Resources, display authentic System UI, protect credentials, and enforce grants. Worlds, content files, behavior code, device adapters, and remote services are untrusted inputs.
+The local Client Core and operating system are trusted to isolate Resources, display authentic System UI, protect credentials, and enforce grants. Worlds, content files, behavior code, device adapters, External Apps, and remote services are untrusted inputs.
 
 ### Protecting shared state
 
@@ -40,6 +40,7 @@ An authoritative server can enforce its rules, but this does not prove that its 
 | Untrusted parsing, decoding, and compilation are isolated | [Publishing and Delivery](../Concepts/Publishing%20and%20Delivery.md) and [Client and Runtime](../Client%20Platform/Client%20and%20Runtime.md) |
 | One World cannot crash or inspect another World | [Client and Runtime](../Client%20Platform/Client%20and%20Runtime.md) |
 | Pairing a device does not grant a World access to its data | [Devices and Input](../Client%20Platform/Devices%20and%20Input.md) |
+| Pairing external software does not grant access to every World, sensor, or Client action | [Software Integration](../Client%20Platform/Software%20Integration.md) |
 | Passthrough composition does not imply camera access | [Client and Runtime](../Client%20Platform/Client%20and%20Runtime.md) |
 | A Message Relay does not prove simulation correctness | [Worlds and Sessions](../Concepts/Worlds%20and%20Sessions.md) |
 | Custom application protocols cannot bypass network or state-authority policy | [Networking](../Client%20Platform/Networking.md) |
@@ -76,6 +77,8 @@ Cross-principal communication is denied unless a typed interface and both releva
 | Stolen publisher or account key | Key separation, rotation, recovery, security epochs, audit history |
 | Cheating participant Client | Authority assigned to a World Server for valuable state |
 | Abusive service endpoint | Authenticated operator, scoped tokens, destination policy, rate limits |
+| External software impersonation, flooding, or cross-World commands | Authenticated Bridge pairing, explicit channel recipients, bounded parsing, revocation, and World authority checks |
+| Device fingerprinting or unsafe output | Permission-filtered discovery and metadata, scoped output commands, safety limits, and stop on disconnect |
 | Denial of service | Budgets, timeouts, cancellation, isolation, retry and fallback |
 
 ## Network Security
@@ -93,7 +96,7 @@ The Client minimizes data at four points:
 3. **Destinations**: distinguish local processing from sending data to a named operator.
 4. **Context**: keep Worlds, Profiles, Overlay Apps, and storage partitions separate.
 
-Exact hardware and feature reporting is bucketed to reduce fingerprinting. Background capture has visible indication. Bystander-sensitive sensors need particularly clear purpose and retention notices.
+Default hardware and feature reporting is minimized or bucketed to reduce fingerprinting. Selected-device manufacturer, model, and protocol details may be exposed under separately scoped access where integration needs them. That does not authorize a full hardware inventory or stable global identifiers. Background capture has visible indication. Bystander-sensitive sensors need particularly clear purpose and retention notices.
 
 A **Data Use Notice** describes what a remote operator claims it will do. It is useful for consent and accountability but cannot technically prove deletion or honest behavior.
 

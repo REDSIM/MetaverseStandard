@@ -46,7 +46,7 @@ All four initial Resource Types use the same [publication and Release model](./C
 | --- | --- | --- |
 | **[World](./Concepts/Worlds%20and%20Sessions.md)** | World Runtime inside a Client | Supplies the scene and application behavior and may integrate Resources and connect to declared services |
 | **[Avatar](./Concepts/Avatars.md)** | Resource Instance inside a World | Represents one World Presence. Behavior is confined to Resource Sandboxes and approved integration interfaces |
-| **[Item](./Concepts/Items%20and%20Ownership.md)** | Resource Instance inside a World | Can be placed, held, attached, or otherwise integrated under the World's rules but cannot independently control another participant |
+| **[Item](./Concepts/Items%20and%20Ownership.md)** | Resource Instance inside a World | Can be fixed, dynamically loaded, held, or attached under the World's rules. Movement and inventory are optional. It cannot independently control another participant |
 | **[Overlay App](./Concepts/Overlay%20Apps.md)** | Independent sandboxed application alongside Worlds | Has its own principal, lifecycle, storage, and grants and uses approved interfaces to interact with a World |
 
 A Release contains a Manifest and hash-bound Content Files. These are **data**, not additional running services. One Release can produce many runtime instances on many devices. Hosting a World package does not execute its scripts on the host.
@@ -65,10 +65,15 @@ These responsibilities are separated for security and implementation clarity. Th
 | **Resource Sandboxes** | Run Avatar and Item behavior within a World's runtime context | Separate principals, budgets, and self-scoped handles. Containment does not imply permission inheritance |
 | **Overlay App runtime** | Runs user-installed cross-World tools | A separate application principal, not a child inheriting access from the foreground World |
 | **Brokers** | Mediate network, files, identity, storage, media capture, and device operations | Check the calling principal, destination, approved scope, and budget and return narrow handles rather than ambient access |
+| **[External App Bridge](./Client%20Platform/Software%20Integration.md)** | Connects user-paired external programs to approved Client functions or specific application interfaces | A separate software integration role. Pairing grants neither hardware access nor unrestricted World control |
 | **Rendering, audio, and platform/device integration** | Present approved output and adapt OS, graphics, XR, and device interfaces | Local Features and Limits remain explicit. Untrusted code does not gain native driver access |
 | **Local storage services** | Keep caches, scoped application data, local Profile data, and user-retained files | Cache eviction, persistent application storage, and a retained Portable Archive have different lifecycles |
 
 The same pattern applies to desktop, mobile, and XR devices. A System Client may also be the device's shell, but Worlds do not acquire operating-system privileges as a result. An AR experience remains a World using optional interfaces through these same boundaries.
+
+Physical peripherals enter through [Device Adapters and the Device Broker](./Client%20Platform/Devices%20and%20Input.md). External Apps run outside the Client and cross the separate Bridge boundary, locally or over an explicitly enabled network. These optional connections are omitted from the compact system map. They do not introduce another mandatory provider or turn external programs into installed Resources.
+
+A World may compose fixed or dynamic Items from several publishers without a new universal composition service. The developer owns discovery and arrangement, while the Client retains validation and sandbox boundaries. User-controlled applications with independent lifecycles use Overlay Apps instead.
 
 ### Where another person's Avatar runs
 

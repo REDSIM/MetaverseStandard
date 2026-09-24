@@ -41,6 +41,7 @@ One product may conform to several independent units:
 - Avatar or Item profile.
 - Resource Relay privacy profile.
 - Device Adapter profile.
+- optional External App Bridge profile and its declared Transport Bindings.
 - optional graphics profile.
 
 This avoids an all-or-nothing “metaverse compatible” badge.
@@ -83,7 +84,15 @@ Manifest and variant-selection tests include a single portable path, shared file
 
 Clients also open a cached Release without server-assisted selection, reject an incompatible server suggestion, and reject altered bytes served under a declared hash. Test observations include which files were requested, so an unsupported heavy variant is not downloaded or decoded merely to discover incompatibility.
 
+Device-dependent mode tests separately retrieve a permitted Release without a camera or controller, run its compatible base path, and report the unavailable mode. They distinguish a user's archive download from automatic preparation, and an unsupported decoder from absent live hardware. Hotplug, denied access, tracking loss, focus changes, and revocation update the permission-filtered runtime view without inventing data or exposing hidden devices. No-input operation remains a valid state even when the World has no useful interactive fallback.
+
 Later suites add sessions, Avatars, Resource Relays, identity, Items, Overlay Apps, devices, and graphics profiles. Avatar and Item tests include hostile behavior components that attempt cross-Resource mutation, undeclared host calls, prompt creation, and budget exhaustion.
+
+Identity tests distinguish account authentication from real-world verification. Clients and providers can interoperate without identity documents or age Claims. Two test Worlds can apply different admission policies without either policy becoming a platform-wide rule. For supported optional Claim extensions, tests distinguish missing, withheld, unsupported, expired, invalid, and unaccepted evidence from a successful assertion, reject disclosure to an unapproved recipient, and ensure that a verifier outage neither invents evidence nor invalidates a Profile throughout the ecosystem. These test integration boundaries, not a mandated identity or age-checking process.
+
+Dynamic Item tests load a fixed sign and a separately scripted panel without pickup or inventory support. Changing a feed resolves and validates a new exact Release before activation. Malformed imported code, inherited-grant attempts, prompt storms, and failed feeds remain contained. Unloading cancels instance work and handles without rewriting pinned dependencies or undoing already accepted shared state.
+
+Device tests include vendor-independent controls, a selected custom schema, restricted manufacturer/model metadata, device reconnection, unsupported protocol descriptors, and force or haptic stop behavior. Software integration has its own [Bridge acceptance criteria](../Client%20Platform/Software%20Integration.md), including secure pairing, two independent implementations, native and browser peers, slow receivers, lossy sample streams, replay rejection, multi-World routing, and hostile shared-memory mutation. A benchmark reports workloads and device conditions rather than claiming one protocol is universally fastest.
 
 Resource Relay tests cover both remote-host retrieval and direct participant upload of the same Release, cache hits by Release ID, admission-limit fallback, hash verification, and absence of mandatory direct viewer-to-origin connections.
 

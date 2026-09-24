@@ -27,6 +27,8 @@ These are non-normative examples. The UI and interaction profile is still an ope
 
 An Overlay App is its own Application Principal, storage area, lifecycle, and permission context. It may continue while the user switches between Worlds, subject to background limits.
 
+A fixed panel dynamically loaded and managed by a World can instead be an [Item](./Items%20and%20Ownership.md). Being stationary or looking like an application does not make it an Overlay App. A native program outside the Client is an [External App](../Client%20Platform/Software%20Integration.md), with a separately paired connection rather than an installed Overlay runtime.
+
 The Client can launch it from System UI, a shortcut, a gesture, or an explicit deep link. The Overlay App cannot register an unbounded input capture or hide the Client’s emergency controls.
 
 Possible presentation forms include:

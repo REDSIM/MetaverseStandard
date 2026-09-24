@@ -60,6 +60,12 @@ A visible name or Avatar is not a reliable identity. Blocking therefore needs to
 
 Pairwise Participant IDs complicate cross-World blocking by design. A future protocol may allow a user to create a privacy-preserving block token or ask their Account Provider to enforce a block without revealing both parties’ full account identity to every World.
 
+## Verification and Admission
+
+[Identity and age checks](../Concepts/Identity%20and%20Profiles.md) belong to external provider and World policies, not a universal entry requirement. Content age labels describe an experience, while an optional age Claim describes an assertion about a participant. Neither replaces the other or guarantees safe behavior.
+
+Worlds may apply their own admission rules, including rules for missing information. Declining to disclose evidence is not itself misconduct or grounds for a network-wide accusation. Verification status does not remove local mute, block, privacy, or emergency-exit controls.
+
 ## Content Labels
 
 Labels may describe age suitability, flashing, motion intensity, violence, sexual content, gambling, user-generated content, voice recording, location use, or other risks. Labels are signed claims from a Publisher or moderation provider, not universal facts.

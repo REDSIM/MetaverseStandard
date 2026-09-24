@@ -10,7 +10,7 @@
 
 **Account Presence**: User-controlled availability and optional shared activity, independent of a particular World Presence. It does not imply one globally active World or Avatar.
 
-**Account Provider**: Replaceable service that authenticates a user and stores or synchronizes account data.
+**Account Provider**: Replaceable service that authenticates a user and stores or synchronizes account data. Account authentication does not imply verification of real-world identity or age.
 
 **Application Principal**: Security identity to which storage, Permission Grants, network policy, identity disclosure, IPC, and update inheritance are bound.
 
@@ -36,7 +36,7 @@
 
 **Client-framed panel**: Untrusted application UI shown inside a boundary controlled and marked by the Client.
 
-**Claim**: Verifiable statement about an account or subject, such as age eligibility or group membership.
+**Claim**: Issuer-attributed statement about an account or subject, such as age eligibility or group membership, with evidence a recipient can verify. A valid signature alone does not prove its truth. Claims are optional disclosures, not mandatory Profile fields or a universal verified status.
 
 **Collection**: User-organised set of saved Resource references, such as favourite Worlds or Avatar and Item choices. It does not itself store the files, prove ownership, or select an active Avatar.
 
@@ -48,7 +48,13 @@
 
 **Device Adapter**: Isolated component that converts an existing device protocol or vendor API into standard Input Signals.
 
+**Device Broker**: Client-controlled interface that exposes approved device signals and output operations, while mediating adapters, device selection, availability, and safety limits.
+
 **Entitlement**: Issuer-signed statement granting defined rights to a Resource under stated conditions, optionally bound to a particular holder. Acceptance depends on the verifier's trust and usage policy. The statement does not by itself prove authorship or legal ownership.
+
+**External App**: Software running outside the Client, such as an animation tool or accessibility utility. It is not an installed Overlay App or a physical Device Adapter.
+
+**External App Bridge**: Optional Client-controlled interface for authenticated, user-paired external software to exchange bounded data and approved actions with selected Client functions or application interfaces.
 
 **Feature**: Function the Client can technically provide, such as hand tracking or a graphics feature.
 
@@ -62,9 +68,9 @@
 
 **Invitation**: Offer to join a specific World session, subject to the destination's admission rules. It may be sent directly or in response to a Join Request.
 
-**Item**: Portable Resource that a World may present, place, hold, attach, or integrate under its own rules.
+**Item**: Portable Resource integrated into a World, including fixed or dynamically loaded content. Movement, pickup, attachment, and inventory membership are independent options, not requirements.
 
-**Item Instance**: Running copy of an Item with session-specific position, holder, attachments, and state.
+**Item Instance**: Running copy of an Item with World-defined placement and state, plus a holder or attachments where supported.
 
 ## J to P
 

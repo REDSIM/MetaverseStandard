@@ -36,6 +36,8 @@ The platform distinguishes user-wide friends and account presence from World-spe
 
 [Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md) proposes a later optional role for offers and rights verification. Participating Clients and services need shared contracts for issuer discovery, scoped authentication, proofs, online checks, extensions, and failures. Basic Resource loading does not require commerce support. Custom rights attributes cannot bypass the Client's network or credential policy.
 
+Account interoperability does not require real-world identity or age checks. Providers may offer external verification and optional Claims, while Worlds choose their own admission conditions. The standard does not prescribe evidence collection or a universal verification authority. See [Identity and Profiles: Identity and Age Checks Are External Policies](./Identity%20and%20Profiles.md).
+
 ## Opening Content Without World Code
 
 1. Resolve the address using a supported platform binding and identify the publisher authority.

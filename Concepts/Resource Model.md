@@ -39,6 +39,7 @@ A root Manifest is expected to contain:
 - publisher authority information, bound to the Release through its signed publication.
 - entry points, behavior roles, host API versions, and content hashes.
 - required and optional Client Profiles, Features, and Limits.
+- separately described device-dependent modes, without treating a missing live input device as a file retrieval prohibition.
 - declared Permissions and their possible scopes.
 - scene or representation data and optional variants.
 - pinned dependencies.
@@ -100,7 +101,7 @@ A **Resource Variant** is a declared alternative within the same Release, such a
 
 Creators choose whether to provide one portable path or several alternatives. The standard defines how requirements and alternatives are described, not an operating-system build matrix or a particular build tool.
 
-Compatibility is evaluated by [the Client before loading content: Feature Negotiation](../Client%20Platform/Features%20and%20Permissions.md). Quality preferences are local policy. Unknown formats and missing required Features are compatibility failures, not quality choices. A Release is portable only across Clients satisfying at least one complete declared path.
+Compatibility is evaluated by [the Client before preparing content: Feature Negotiation](../Client%20Platform/Features%20and%20Permissions.md). Quality preferences are local policy. Unknown formats and missing required execution Features are compatibility failures, not quality choices. A Release can execute only across Clients satisfying at least one complete declared path. Live device availability and approval are checked separately when a mode uses them. Files can be retained without claiming they can run locally.
 
 ## Local Lifecycle
 
@@ -115,11 +116,13 @@ The Client may move a Release through these internal states:
 7. **Active**: a sandboxed runtime copy is running.
 8. **Blocked**: policy or validation prevents use.
 
-These names describe observable outcomes, not a required storage implementation.
+These names describe observable outcomes for preparing and running content, not a required storage implementation. A retained archive may contain files for currently unsupported paths. Their presence does not imply that they passed preparation or that a required device is currently available.
 
 ## Composition Rules
 
 A Resource may refer to other Releases, but every dependency is independently identified and validated. Permissions do not flow through composition: a World embedding an Item does not give that Item the World’s grants, and equipping an Avatar accessory does not give it Avatar privileges.
+
+A World may also select Items dynamically through its supported loading interface. A discovery result is resolved to an exact, verified Release before activation and does not rewrite a pinned dependency or the World's Manifest. Runtime feeds and placement policy belong to the World. [Items and Ownership: Loading and Composing Items](./Items%20and%20Ownership.md) distinguishes separately published Items from ordinary data used to generate scene objects. Client-managed Resource and code-module activation requires validation. Application code interpreting its own input remains under that application's existing authority and budgets, without creating a new Resource identity or additional grants.
 
 Avatars and Items may contain **Resource Behavior**. When the World activates it, the Client creates a **Resource Sandbox** nested inside the World Runtime. The code receives a Self Handle for its own runtime instance and only the host interfaces declared for that behavior profile. It may update its own allowed presentation and local state, but it cannot enumerate or mutate arbitrary World entities.
 
@@ -129,7 +132,7 @@ Interaction outside the Resource Sandbox uses a typed request to a World integra
 
 - A missing or invalid file required by the selected path causes a declared fallback or blocks activation if no complete valid path remains. Files exclusive to an unselected variant are not required for activation.
 - A missing optional file uses its declared fallback.
-- An unsupported required Feature rules out the affected path. If none remain, launch is refused with a clear explanation.
+- An unsupported required decoding or execution Feature rules out the affected path. If none remain, execution is refused with a clear explanation. Device-dependent modes separately report unavailable or denied access without imposing a blanket download ban.
 - An unsupported optional Feature selects a compatible variant.
 - An invalid participant Avatar or Item becomes a safe placeholder.
 - Failure of Resource Behavior disables that behavior and keeps a declarative visual fallback when possible.
