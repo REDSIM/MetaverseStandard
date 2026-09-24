@@ -4,12 +4,12 @@
 
 This vault develops an open standard in which:
 
-- **Clients** open and run compatible interactive applications;
-- **Worlds** replace websites as navigable interactive spaces;
-- **Avatars**, **Items**, and **Overlay Apps** are portable Resources;
+- **Clients** open and run compatible interactive applications.
+- **Worlds** replace websites as navigable interactive spaces.
+- **Avatars**, **Items**, and **Overlay Apps** are portable Resources.
 - independent providers may host identity, content, sessions, relays, and moderation.
 
-The modern web platform is the primary design reference. The browser analogy alone does not decide the architecture; applicable web standards and implementation experience inform each subsystem.
+The modern web platform is the primary design reference. The browser analogy alone does not decide the architecture. Applicable web standards and implementation experience inform each subsystem.
 
 ## Assistant Role
 
@@ -50,7 +50,7 @@ The modern web platform is the primary design reference. The browser analogy alo
 - Prefer plain technical language and one canonical term per concept.
 - Keep one canonical owner for each rule and link to it instead of repeating it.
 - Use ordinary Markdown links with document-relative paths, explicit file extensions, forward slashes, and URL-encoded spaces so the same files work in GitHub and Obsidian. Use `./` or `../` rather than vault-root shortcuts.
-- For cross-document section references, link to the note and name the section in the visible label; GitHub heading slugs and Obsidian heading names are not a shared anchor contract. See [Contributing](./CONTRIBUTING.md).
+- For cross-document section references, link to the note and name the section in the visible label. GitHub heading slugs and Obsidian heading names are not a shared anchor contract. See [Contributing](./CONTRIBUTING.md).
 - Use diagrams, tables, and examples only when they improve understanding.
 - Mark non-normative examples when they may look like requirements.
 - Use **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** only in deliberate normative specifications.
@@ -70,10 +70,10 @@ Do not collapse these concepts into the word `capability`.
 
 For each design, check:
 
-- actors, data owners, principals, and trust boundaries;
-- addressing, discovery, formats, transport, and authority;
-- identity, privacy, permissions, safety, and moderation;
-- cross-platform Profiles, fallbacks, budgets, and failure behavior;
-- versioning, extensions, migration, and backward compatibility;
-- whether two independent implementations can pass the same test;
+- actors, data owners, principals, and trust boundaries.
+- addressing, discovery, formats, transport, and authority.
+- identity, privacy, permissions, safety, and moderation.
+- cross-platform Profiles, fallbacks, budgets, and failure behavior.
+- versioning, extensions, migration, and backward compatibility.
+- whether two independent implementations can pass the same test.
 - applicable modern web precedents, reuse decisions, and remaining use-case coverage gaps.

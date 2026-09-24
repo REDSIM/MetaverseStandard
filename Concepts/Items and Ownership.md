@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Concept](../Start%20Here.md) · [Architecture](../Architecture%20Overview.md) · [Glossary](../Reference/Glossary.md)
 
-> An Item is portable content that a World may display, place, hold, or attach; portability does not force every World to support the same behavior.
+> An Item is portable content that a World may display, place, hold, or attach. Portability does not force every World to support the same behavior.
 
 ## At a Glance
 
@@ -11,7 +11,7 @@
 - Items may include sandboxed code that controls their own presentation and submits typed interaction requests.
 - Complex effects on World state require a shared interaction model or a World-specific integration contract.
 - A World may reject, replace, or restrict an Item for safety, fairness, performance, or theme.
-- An optional Entitlement records rights granted by an issuer; its acceptance depends on the verifier's policy, not merely on possession of a content file.
+- An optional Entitlement records rights granted by an issuer. Its acceptance depends on the verifier's policy, not merely on possession of a content file.
 
 ## Core Model
 
@@ -20,25 +20,25 @@
 | **Item Resource** | The continuing portable object and its Releases |
 | **Item Release** | One immutable appearance and behavior description |
 | **Item Instance** | A running copy with a position, holder, attachments, and session state |
-| **Entitlement** | Issuer-signed statement granting defined rights under stated conditions; see [Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md) |
+| **Entitlement** | Issuer-signed statement granting defined rights under stated conditions. See [Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md) |
 | **World Integration** | Contract that explains how a World interprets an Item’s optional behavior or state |
 
 An Entitlement is distinct from:
 
-- legal ownership under a jurisdiction;
-- possession of an encrypted or public content file;
-- control of one runtime Item Instance;
+- legal ownership under a jurisdiction.
+- possession of an encrypted or public content file.
+- control of one runtime Item Instance.
 - permission to use the Item in every World.
 
 ## Portability Levels
 
 Item interoperability should be promised in explicit levels:
 
-1. **Appearance** — model, materials, bounds, thumbnail, and fallbacks.
-2. **Attachment** — standardized grip, wearable, socket, and placement metadata.
-3. **Self behavior** — sandboxed code controlling only the Item Instance's allowed presentation and local state.
-4. **World integration** — a versioned interface understood by a particular World family or game.
-5. **Issuer state** — persistent state or Entitlement verified by an authoritative service.
+1. **Appearance**: model, materials, bounds, thumbnail, and fallbacks.
+2. **Attachment**: standardized grip, wearable, socket, and placement metadata.
+3. **Self behavior**: sandboxed code controlling only the Item Instance's allowed presentation and local state.
+4. **World integration**: a versioned interface understood by a particular World family or game.
+5. **Issuer state**: persistent state or Entitlement verified by an authoritative service.
 
 Levels 1 through 3 can be portable through the common Resource Sandbox and behavior API. Complex World effects still require common physics, timing, authority, and game semantics or an explicit World integration contract.
 
@@ -70,7 +70,7 @@ Every state field needs an owner, validation rules, replay behavior, and conflic
 
 ## Commerce and Transfers
 
-[Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md) defines the shared model for Items and other Resources: independent stores may sell sources, Portable Archives, service access, or combinations. Optional Entitlements remain separate from immutable Item files. Base Item use has no universal purchase-proof requirement; a World may require accepted proof under its stated rules.
+[Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md) defines the shared model for Items and other Resources: independent stores may sell sources, Portable Archives, service access, or combinations. Optional Entitlements remain separate from immutable Item files. Base Item use has no universal purchase-proof requirement. A World may require accepted proof under its stated rules.
 
 Exclusive online inventory and transfer remain issuer- or server-authoritative state. They do not establish that offline files cannot be copied. Backup, account changes, resale, and service-closure behavior follow the particular offer, not the presence of an Item in a Collection.
 

@@ -6,8 +6,8 @@
 
 The original concept and design direction of the Open Metaverse Standard are by:
 
-- **REDSIM** — [GitHub profile](https://github.com/REDSIM)
-- **vard88508** — [GitHub profile](https://github.com/vard88508)
+- **REDSIM**: [GitHub profile](https://github.com/REDSIM)
+- **vard88508**: [GitHub profile](https://github.com/vard88508)
 
 The project is developed openly. Later contributions do not erase the originators' credit, and contributors retain attribution for their own work. Referenced standards, libraries, and third-party material retain their respective authorship and terms.
 
@@ -15,7 +15,7 @@ The project is developed openly. Later contributions do not erase the originator
 
 AI tools helped turn discussions into structured documentation and assisted with editing, research, diagrams, and critical review. The named humans are the originators of the project, not the AI tools.
 
-AI assistance is not a guarantee of technical accuracy, originality, or legal protection of every passage. Proposed mechanisms still need review and implementation evidence. The license grants only rights the contributors actually hold; it does not create copyright in unprotected material.
+AI assistance is not a guarantee of technical accuracy, originality, or legal protection of every passage. Proposed mechanisms still need review and implementation evidence. The license grants only rights the contributors actually hold. It does not create copyright in unprotected material.
 
 ## License Scope
 
@@ -27,7 +27,7 @@ The full, unmodified license text is in [LICENSE.md](./LICENSE.md). The [officia
 - When sharing covered material or an adaptation, retain the supplied author identification and notices, link to the material where reasonably practicable, identify the license, and indicate modifications. Attribution can be given in a reasonable way for the medium and context.
 - Do not imply that the authors endorse your changes, service, or implementation.
 - External standards, linked works, trademarks, and separately marked third-party material are not relicensed by this repository.
-- CC BY 4.0 does not license patent or trademark rights. A future implementation's software license and any standards patent policy need separate decisions; neither is silently established here.
+- CC BY 4.0 does not license patent or trademark rights. A future implementation's software license and any standards patent policy need separate decisions. Neither is silently established here.
 
 The license is irrevocable for recipients who comply with its terms. Nothing in this note adds restrictions beyond the license or removes applicable exceptions and limitations.
 

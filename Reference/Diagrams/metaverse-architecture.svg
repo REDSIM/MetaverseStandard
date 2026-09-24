@@ -2,7 +2,7 @@
   <!-- SPDX-License-Identifier: CC-BY-4.0 -->
   <metadata>Open Metaverse Standard documentation diagram. Source: https://github.com/REDSIM/MetaverseStandard. Original project concept and design direction: REDSIM (https://github.com/REDSIM) and vard88508 (https://github.com/vard88508). Prepared with AI assistance. Licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/), to the extent applicable rights are held. See the repository README and AUTHORS.md for attribution and scope.</metadata>
   <title id="title">Metaverse architecture: local execution and independent services</title>
-  <desc id="description">Three deployment lanes show a local user's Client, independent provider roles, and other participants' Clients. Each Client contains trusted Core and System UI, validation and storage support, isolated World Runtimes with Avatar and Item behavior sandboxes, independent Overlay Apps, and Client-owned brokers and platform adapters. All external communication crosses a Client-owned Network Broker. Resource Hosts and Mirrors provide immutable Release data; a Resource Relay fetches that data or accepts a local user's upload, then delivers it to other viewers. Separate session coordination, message, media, and optional authoritative backend roles exchange data through the same broker boundary. Optional directory, account and social, store and rights, and moderation services remain independent. Boxes describe logical roles, not mandatory operating-system processes; arrows show communication, not authority or inherited permissions.</desc>
+  <desc id="description">Three deployment lanes show a local user's Client, independent provider roles, and other participants' Clients. Each Client contains trusted Core and System UI, validation and storage support, isolated World Runtimes with Avatar and Item behavior sandboxes, independent Overlay Apps, and Client-owned brokers and platform adapters. All external communication crosses a Client-owned Network Broker. Resource Hosts and Mirrors provide immutable Release data. A Resource Relay fetches that data or accepts a local user's upload, then delivers it to other viewers. Separate session coordination, message, media, and optional authoritative backend roles exchange data through the same broker boundary. Optional directory, account and social, store and rights, and moderation services remain independent. Boxes describe logical roles, not mandatory operating-system processes. Arrows show communication, not authority or inherited permissions.</desc>
   <defs>
     <style>
       text { font-family: Arial, Helvetica, sans-serif; fill: #d7dee8; }
@@ -37,7 +37,7 @@
 
   <rect width="1880" height="1500" fill="#0d1117"/>
   <text x="40" y="58" class="heading">One platform, independent roles</text>
-  <text x="40" y="92" class="subtitle">Content is downloaded; running copies are isolated locally; selected services connect participants.</text>
+  <text x="40" y="92" class="subtitle">Content is downloaded. Running copies are isolated locally. Selected services connect participants.</text>
   <text x="40" y="123" class="small">Concept architecture · A possible online deployment, not a required process layout or universal network topology</text>
 
   <!-- Deployment lanes. -->
@@ -59,7 +59,7 @@
 
   <rect x="64" y="355" width="545" height="96" rx="10" class="support"/>
   <text x="82" y="384" class="card-title">Validation, preparation + local storage</text>
-  <text x="82" y="410" class="body">Verify Releases; isolate parsers, decoders and compilers.</text>
+  <text x="82" y="410" class="body">Verify Releases. Isolate parsers, decoders and compilers.</text>
   <text x="82" y="435" class="small">Content cache ≠ retained archive ≠ a running instance.</text>
   <path d="M 242 451 L 242 482" class="local-flow" marker-end="url(#grey-arrow)"/>
   <text x="256" y="474" class="tiny">validated content → running copies</text>
@@ -73,7 +73,7 @@
   <text x="96" y="638" class="small">Self-scoped presentation and behavior</text>
   <rect x="80" y="665" width="323" height="80" rx="8" class="nested"/>
   <text x="96" y="691" class="small-title">Item Resource Sandboxes</text>
-  <text x="96" y="715" class="small">Self behavior; checked World requests</text>
+  <text x="96" y="715" class="small">Self behavior, checked World requests</text>
   <text x="96" y="735" class="small">No arbitrary player or state control</text>
   <text x="82" y="770" class="tiny">Separate scopes and quotas, not inherited grants</text>
 
@@ -83,7 +83,7 @@
   <text x="455" y="578" class="body">principals</text>
   <text x="455" y="621" class="small">Own lifecycle,</text>
   <text x="455" y="644" class="small">storage and grants</text>
-  <text x="455" y="687" class="small">Across Worlds;</text>
+  <text x="455" y="687" class="small">Across Worlds,</text>
   <text x="455" y="710" class="small">private by default</text>
   <text x="455" y="754" class="tiny">Not trusted System UI</text>
 
@@ -91,7 +91,7 @@
   <path d="M 242 786 L 242 807 L 633 807" class="local-flow" marker-end="url(#grey-arrow)"/>
   <path d="M 524 786 L 524 807" class="local-flow"/>
   <path d="M 575 807 L 575 848" class="local-flow" marker-end="url(#grey-arrow)"/>
-  <text x="82" y="834" class="small">Scoped host API requests; checked before access</text>
+  <text x="82" y="834" class="small">Scoped host API requests, checked before access</text>
 
   <rect x="64" y="854" width="545" height="96" rx="10" class="trusted"/>
   <text x="82" y="884" class="card-title">Other Client-owned Brokers</text>
@@ -137,13 +137,13 @@
   <rect x="840" y="436" width="560" height="144" rx="10" class="service"/>
   <text x="860" y="467" class="card-title">Resource Relay</text>
   <text x="860" y="495" class="body">Accept local uploads OR fetch remote Content Files.</text>
-  <text x="860" y="522" class="body">Validate admission limits; optionally cache; serve viewers.</text>
+  <text x="860" y="522" class="body">Validate admission limits. Optionally cache. Serve viewers.</text>
   <text x="860" y="550" class="small">Viewers do not contact participant-selected origins directly.</text>
   <text x="860" y="570" class="tiny">File delivery does not itself verify usage rights or grant execution.</text>
 
   <rect x="840" y="628" width="560" height="96" rx="10" class="service"/>
   <text x="860" y="659" class="card-title">Session Coordinator</text>
-  <text x="860" y="687" class="body">Create / discover sessions; handle the join flow.</text>
+  <text x="860" y="687" class="body">Create / discover sessions and handle the join flow.</text>
   <text x="860" y="712" class="small">Not a required global coordinator or content authority.</text>
 
   <rect x="840" y="763" width="560" height="120" rx="10" class="service"/>
@@ -155,11 +155,11 @@
   <rect x="840" y="898" width="560" height="96" rx="10" class="service"/>
   <text x="860" y="929" class="card-title">Media Relay</text>
   <text x="860" y="957" class="body">Latency-sensitive voice / media routing</text>
-  <text x="860" y="982" class="small">Separate media handling; not a Resource file host.</text>
+  <text x="860" y="982" class="small">Separate media handling, not a Resource file host.</text>
 
   <rect x="840" y="1033" width="560" height="104" rx="10" class="optional"/>
   <text x="860" y="1064" class="card-title">Authoritative World Server / backend</text>
-  <text x="860" y="1092" class="body">Own selected state domains; validate outcomes; persist data.</text>
+  <text x="860" y="1092" class="body">Own selected state domains. Validate outcomes. Persist data.</text>
   <text x="860" y="1118" class="small">World-specific protocol or an opted-in Session Profile</text>
   <text x="840" y="1176" class="small">Services are selected according to the experience.</text>
   <text x="840" y="1201" class="small">A local / offline World needs no session provider.</text>
@@ -205,7 +205,7 @@
   <text x="1617" y="1033" class="small-title">Adapters + OS / XR</text>
   <text x="1617" y="1062" class="small">Their hardware and</text>
   <text x="1617" y="1083" class="small">platform implementation</text>
-  <text x="1601" y="1136" class="small">Equivalent boundaries;</text>
+  <text x="1601" y="1136" class="small">Equivalent boundaries,</text>
   <text x="1601" y="1160" class="small">not necessarily the</text>
   <text x="1601" y="1184" class="small">same Client software.</text>
 
@@ -251,7 +251,7 @@
   <text x="963" y="1259" class="small">Brokered discovery, account, commerce and policy calls</text>
   <rect x="40" y="1285" width="1800" height="115" rx="15" class="optional"/>
   <text x="60" y="1317" class="card-title">Optional ecosystem services</text>
-  <text x="650" y="1317" class="small">Independent providers; access is explicit, not a privilege inherited by World content.</text>
+  <text x="650" y="1317" class="small">Independent providers. Access is explicit, not a privilege inherited by World content.</text>
   <rect x="60" y="1334" width="408" height="46" rx="8" class="service"/>
   <text x="80" y="1363" class="small-title">World Directories</text>
   <rect x="486" y="1334" width="432" height="46" rx="8" class="service"/>

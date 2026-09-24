@@ -8,10 +8,10 @@
 
 - Every Avatar supports a small **Avatar Core** that any compatible Client can present safely.
 - A **Humanoid Rig** adds standardized body, face, hand, and tracking semantics.
-- Unusual bodies remain valid; they may add future semantic rig extensions without creating a type for every anatomy.
+- Unusual bodies remain valid and may add future semantic rig extensions without creating a type for every anatomy.
 - An Avatar may include sandboxed code for animation, effects, and World interaction.
 - Avatar code receives access to its own Avatar Instance by default, never arbitrary participants.
-- Each World Presence reports the Avatar it uses; the Client decides how that Avatar is selected.
+- Each World Presence reports the Avatar it uses. The Client decides how that Avatar is selected.
 - Worlds and users may replace expensive or unsafe Avatars with fallbacks.
 
 ## Avatar Selection
@@ -28,13 +28,13 @@ When joining a World or session, the Client communicates which Avatar Release re
 
 The Avatar Core describes the minimum information needed even when the Client does not understand the anatomy:
 
-- root transform, physical scale, and bounds;
-- neutral pose and visual scene entry point;
-- viewpoint and first-person visibility rules;
-- nameplate and voice-source anchors;
-- personal-space and basic interaction bounds;
-- thumbnail and safe placeholder;
-- presentation variants and levels of detail;
+- root transform, physical scale, and bounds.
+- neutral pose and visual scene entry point.
+- viewpoint and first-person visibility rules.
+- nameplate and voice-source anchors.
+- personal-space and basic interaction bounds.
+- thumbnail and safe placeholder.
+- presentation variants and levels of detail.
 - declared performance budgets.
 
 This is more useful than a “generic” label: it defines what all Clients can rely on without claiming to understand the skeleton.
@@ -75,13 +75,13 @@ The Client owns the participant's semantic pose and tracking pipeline. Avatar co
 
 An Avatar Release may include Resource Behavior for:
 
-- procedural animation and secondary motion;
-- expressions, material changes, particles, and bounded audio;
-- reactions to the Avatar's own state or allowed contacts;
-- typed interaction requests understood by the current World;
+- procedural animation and secondary motion.
+- expressions, material changes, particles, and bounded audio.
+- reactions to the Avatar's own state or allowed contacts.
+- typed interaction requests understood by the current World.
 - optional features that use explicitly granted Input Signals or external APIs.
 
-The code runs in a Resource Sandbox with a Self Handle for that Avatar Instance. It cannot search for arbitrary entities or call unrestricted World mutation APIs. To interact with a pickup, participant, or World system, it sends a typed intent; the World checks range, policy, state authority, and rate limits before applying any effect.
+The code runs in a Resource Sandbox with a Self Handle for that Avatar Instance. It cannot search for arbitrary entities or call unrestricted World mutation APIs. To interact with a pickup, participant, or World system, it sends a typed intent. The World checks range, policy, state authority, and rate limits before applying any effect.
 
 The Avatar Manifest lists behavior modules, host API versions, budgets, and the maximum external Permissions they may request. A remote participant's Avatar may run self-scoped presentation behavior, but it cannot create permission prompts on the viewer's Client. Sensitive access is available only after an explicit local activation and Permission Grant.
 
@@ -102,7 +102,7 @@ An Avatar image, name, or signature from its Publisher does not prove the identi
 
 Basic Avatar use does not require a purchase certificate. Optional Entitlements and community acceptance rules follow [Commerce and Usage Rights](./Commerce%20and%20Usage%20Rights.md), independently of Avatar selection and the published content files. Missing proof is not proof of theft, and verification does not make a locally rendered model impossible to extract.
 
-Stores may offer editable sources, a Portable Archive, service-dependent use, or a combination. A retained archive can preserve the promised independent use; a viewer cache or an entry in an Avatar Collection is not that promise. Backup and account-transfer conditions are disclosed by the offer rather than inferred from the file's presence.
+Stores may offer editable sources, a Portable Archive, service-dependent use, or a combination. A retained archive can preserve the promised independent use. A viewer cache or an entry in an Avatar Collection is not that promise. Backup and account-transfer conditions are disclosed by the offer rather than inferred from the file's presence.
 
 ## Current Proposals
 

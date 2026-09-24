@@ -8,7 +8,7 @@ This is an evolving concept and architecture, not a ratified standard. Useful co
 
 1. Read the relevant topic and the [decision register](./Reference/Open%20Decisions%20and%20Roadmap.md).
 2. Explain the user need, affected boundaries, alternatives, and compatibility or security implications.
-3. Reuse applicable modern web standards where possible; cite primary sources and distinguish an adopted direction from a candidate technology.
+3. Reuse applicable modern web standards where possible. Cite primary sources and distinguish an adopted direction from a candidate technology.
 4. Update the canonical topic, related definitions, and affected links. Do not repeat a rule across several notes when a link is enough.
 5. Explain how two independent implementations could test the proposal. Exact schemas and normative requirements come after the concept is clear.
 
@@ -27,7 +27,7 @@ Keep a single copy of each document. Use ordinary Markdown with paths relative t
 These examples are written from the repository root except for the explicitly labeled subfolder example.
 
 - Include the `.md` extension, use forward slashes, and encode spaces as `%20`.
-- Use `./` for links within or below the current folder and `../` for a parent folder. Match filename capitalization exactly; GitHub paths are case-sensitive.
+- Use `./` for links within or below the current folder and `../` for a parent folder. Match filename capitalization exactly. GitHub paths are case-sensitive.
 - Link to a topic's actual file, not a vault-specific shortcut, absolute disk path, `obsidian://` URL, or assumed GitHub repository/branch URL.
 - Use standard image syntax for SVGs and other illustrations. Keep an adjacent file link when opening a diagram at full size is useful.
 - GitHub and Obsidian use different heading-fragment conventions. Shared cross-document references therefore link to the note and name the relevant section in the visible label. They open the document but do not promise automatic scrolling to that section. The reader can use the application's outline to find it.
@@ -37,14 +37,14 @@ The compatibility basis is documented in [Obsidian's internal-link help](https:/
 
 ### Recommended Obsidian Settings
 
-Open this repository folder as a vault, or keep it inside an existing vault. Under **Files and links**, turn off **Use Wikilinks**, choose **Relative path to file** for the new link format, and enable automatic internal-link updates if desired. These settings are recommendations; the documents themselves do not require an `.obsidian` configuration to be distributed.
+Open this repository folder as a vault, or keep it inside an existing vault. Under **Files and links**, turn off **Use Wikilinks**, choose **Relative path to file** for the new link format, and enable automatic internal-link updates if desired. These settings are recommendations. The documents themselves do not require an `.obsidian` configuration to be distributed.
 
 Local workspace layouts, plugins, and caches stay outside version control. Do not commit private notes, account data, credentials, or machine-specific paths.
 
 ## Before Submitting
 
 - Start at `README.md` and check that every changed local link and image resolves, including from nested folders.
-- Check both the rendered Markdown and the source; keep headings readable, tables aligned semantically, and examples clearly non-normative.
+- Check both the rendered Markdown and the source. Keep headings readable, tables aligned semantically, and examples clearly non-normative.
 - Keep terms consistent with the [Glossary](./Reference/Glossary.md).
 - Inspect the file list for local editor state, secrets, temporary files, and unintended changes.
 - Do not imply that a proposal has been implemented or passed conformance tests without evidence.

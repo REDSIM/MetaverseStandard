@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Concept](../Start%20Here.md) · [Architecture](../Architecture%20Overview.md) · [Glossary](../Reference/Glossary.md)
 
-> Security protects systems and data; safety controls help people leave, filter, and recover from harmful experiences and other users.
+> Security protects systems and data. Safety controls help people leave, filter, and recover from harmful experiences and other users.
 
 ## At a Glance
 
@@ -16,13 +16,13 @@
 
 The Client provides controls that work across Worlds:
 
-- mute voice or other audio by participant or application;
-- hide or replace Avatars, Items, effects, and Overlay Apps;
-- block a participant across selected Profiles or contexts;
-- enforce personal-space and contact boundaries;
-- reduce flashes, motion, volume, haptics, particles, and visual complexity;
-- stop camera, microphone, tracking, and spatial sharing;
-- show which World and Profile are active;
+- mute voice or other audio by participant or application.
+- hide or replace Avatars, Items, effects, and Overlay Apps.
+- block a participant across selected Profiles or contexts.
+- enforce personal-space and contact boundaries.
+- reduce flashes, motion, volume, haptics, particles, and visual complexity.
+- stop camera, microphone, tracking, and spatial sharing.
+- show which World and Profile are active.
 - leave the foreground World immediately through trusted System UI.
 
 These controls do not depend on a World script continuing to run.
@@ -31,13 +31,13 @@ These controls do not depend on a World script continuing to run.
 
 Immersive content can cause harm without exploiting software. Clients therefore need user-controlled limits for:
 
-- locomotion and camera motion;
-- flashing and high-contrast patterns;
-- sudden or sustained audio levels;
-- haptic intensity and duration;
-- content near the face or inside personal space;
-- passthrough, guardian, and physical-boundary visibility;
-- interaction while seated, standing, or moving;
+- locomotion and camera motion.
+- flashing and high-contrast patterns.
+- sudden or sustained audio levels.
+- haptic intensity and duration.
+- content near the face or inside personal space.
+- passthrough, guardian, and physical-boundary visibility.
+- interaction while seated, standing, or moving.
 - accessibility alternatives for required gestures or senses.
 
 A World declares relevant comfort and hazard metadata, but the Client may enforce stricter policy. User safety bounds are not presentation suggestions.
@@ -66,13 +66,13 @@ Labels may describe age suitability, flashing, motion intensity, violence, sexua
 
 Clients show label source and apply user-selected policy. Missing labels are treated as unknown rather than safe.
 
-Optional purchase or usage verification follows [Commerce and Usage Rights](../Concepts/Commerce%20and%20Usage%20Rights.md). A community can require rights from accepted issuers without imposing that policy on the whole network. Failure to establish eligibility is not itself a finding of theft; accusations and disputes require a separate evidence and appeal process.
+Optional purchase or usage verification follows [Commerce and Usage Rights](../Concepts/Commerce%20and%20Usage%20Rights.md). A community can require rights from accepted issuers without imposing that policy on the whole network. Failure to establish eligibility is not itself a finding of theft. Accusations and disputes require a separate evidence and appeal process.
 
 ## Reporting
 
 A report can include selected identifiers, timestamps, messages, media, or local logs. The Client previews exactly what will be sent, to whom, and under which Profile. Continuous recording is never assumed merely to make later reporting easier.
 
-Services publish receipt, appeal, retention, and transparency behavior where appropriate. Evidence authenticity and privacy must be balanced; the standard cannot promise that every dispute has complete evidence.
+Services publish receipt, appeal, retention, and transparency behavior where appropriate. Evidence authenticity and privacy must be balanced. The standard cannot promise that every dispute has complete evidence.
 
 ## Multi-World Safety
 

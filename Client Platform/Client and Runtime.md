@@ -7,7 +7,7 @@
 ## At a Glance
 
 - Anyone may implement a compatible Client.
-- An **App Client** runs as an ordinary application; a **System Client** may be the main shell of an XR device.
+- An **App Client** runs as an ordinary application. A **System Client** may be the main shell of an XR device.
 - The standard defines observable isolation and lifecycle behavior, not one mandatory process layout.
 - Several Worlds may remain open, but presentation, execution, and session presence are managed separately.
 - Only trusted System UI grants Permissions, manages identities, and provides emergency controls.
@@ -39,10 +39,10 @@ Cross-platform compatibility does not mean every device implements every feature
 
 Candidate profiles include:
 
-- **Core 3D** — baseline scene, input, audio, and sandbox needed by all Clients;
-- **Desktop** — keyboard, pointer, larger memory and graphics budgets;
-- **Mobile** — touch, mobile lifecycle, and stricter resource limits;
-- **Immersive XR** — stereoscopic presentation, tracked poses, spatial input, and XR safety controls.
+- **Core 3D**: baseline scene, input, audio, and sandbox needed by all Clients.
+- **Desktop**: keyboard, pointer, larger memory and graphics budgets.
+- **Mobile**: touch, mobile lifecycle, and stricter resource limits.
+- **Immersive XR**: stereoscopic presentation, tracked poses, spatial input, and XR safety controls.
 
 Profiles are bundles of minimum Features and Limits. A specific device may advertise more than its named Profile.
 
@@ -52,13 +52,13 @@ These candidate names describe supported behavior, not mandatory build targets o
 
 The implementation may use one operating-system process per World, a process pool, virtual machines, language sandboxes, or a combination. What matters is observable containment:
 
-- one World cannot read another World’s memory, storage, tokens, or Permission Grants;
-- one Avatar or Item behavior component cannot inspect or mutate another Resource or participant without a typed World-mediated interface;
-- downloaded code cannot call operating-system APIs except through brokers;
-- CPU, memory, GPU, storage, network, audio, and message budgets are enforced;
-- untrusted parsers and compilers are isolated and restartable;
-- a World crash or forced termination leaves the Client and other Worlds usable;
-- native compiled caches are local, disposable, and never accepted as portable authority;
+- one World cannot read another World’s memory, storage, tokens, or Permission Grants.
+- one Avatar or Item behavior component cannot inspect or mutate another Resource or participant without a typed World-mediated interface.
+- downloaded code cannot call operating-system APIs except through brokers.
+- CPU, memory, GPU, storage, network, audio, and message budgets are enforced.
+- untrusted parsers and compilers are isolated and restartable.
+- a World crash or forced termination leaves the Client and other Worlds usable.
+- native compiled caches are local, disposable, and never accepted as portable authority.
 - Client emergency controls remain responsive under load.
 
 Avatars and Items do not each require a separate OS process. Their code may run as separate [WebAssembly components](https://github.com/WebAssembly/component-model) or equivalent compartments inside the World Runtime, with independent memory, principals, quotas, Permission Grants, and Self Handles. Sharing a scheduler or process never implies sharing authority.
@@ -71,39 +71,39 @@ Three independent state axes avoid confusing “open,” “visible,” and “o
 
 ### Execution
 
-- **Running** — normal execution budget.
-- **Throttled** — reduced updates and background budget.
-- **Suspended** — no Resource code executes; Client-managed state may remain.
-- **Terminated** — runtime is destroyed.
+- **Running**: normal execution budget.
+- **Throttled**: reduced updates and background budget.
+- **Suspended**: no Resource code executes, but Client-managed state may remain.
+- **Terminated**: runtime is destroyed.
 
 ### Presentation
 
-- **Foreground** — primary immersive view and input focus.
-- **Visible** — shown as a panel, portal, or secondary surface.
-- **Hidden** — no visual presentation.
+- **Foreground**: primary immersive view and input focus.
+- **Visible**: shown as a panel, portal, or secondary surface.
+- **Hidden**: no visual presentation.
 
 ### Session presence
 
-- **Connected** — live participant.
-- **Away** — Client-managed AFK presence; Resource code may be suspended.
-- **Disconnected** — no session presence.
+- **Connected**: live participant.
+- **Away**: Client-managed AFK presence. Resource code may be suspended.
+- **Disconnected**: no session presence.
 
 Each World Presence communicates its active Avatar to the relevant World or session. A Client may use one Avatar everywhere, allow different Avatars in simultaneous Worlds, or provide optional per-World presets. The standard does not require one selection policy.
 
 For example, an interview World may be hidden and throttled while its audio remains connected, while a home World becomes foreground. The user may have a different Avatar in each. Whether an away Avatar freezes, uses an AFK pose, or receives limited pose updates is a user and session policy choice.
 
-A practical switching default is to focus input on the selected World and mark the previous presence away. This does not pause the shared World for other participants. Session timeout and admission policies may still end a background connection. Social visibility and person-directed Join Requests follow [the multi-presence model — Multiple shared presences](../Concepts/Identity%20and%20Profiles.md), not one global current-World field.
+A practical switching default is to focus input on the selected World and mark the previous presence away. This does not pause the shared World for other participants. Session timeout and admission policies may still end a background connection. Social visibility and person-directed Join Requests follow [the multi-presence model: Multiple shared presences](../Concepts/Identity%20and%20Profiles.md), not one global current-World field.
 
 ## Focus and Data Arbitration
 
 The Client separately controls:
 
-- immersive visual focus;
-- keyboard, controller, hand, and gaze input focus;
-- microphone capture and destination;
-- tracking publication;
-- audio output and mixing;
-- haptic output;
+- immersive visual focus.
+- keyboard, controller, hand, and gaze input focus.
+- microphone capture and destination.
+- tracking publication.
+- audio output and mixing.
+- haptic output.
 - camera and spatial-data access.
 
 Live tracking is not copied into every open World by default. Background access needs a specific Permission and visible indication.
@@ -122,20 +122,20 @@ The standard defines the interfaces a World can use, not one mandatory environme
 | Sensor and spatial interfaces, Feature checks, grants, and lifecycle limits | Client brokers |
 | Holograms, interaction, custom scene interpretation, saved application state, and multiplayer rules | World scripts and any services the creator chooses |
 
-Video passthrough combines a camera view with virtual content; optical see-through lets the user see reality through the display itself. Neither implies that World code receives camera images. Where supported, a World can use Client-provided tracking and Spatial Anchors without implementing its own computer vision. With separately approved camera or sensor access, its scripts can instead implement custom recognition or mapping within normal sandbox budgets. They do not replace the trusted device compositor or safety controls.
+Video passthrough combines a camera view with virtual content. Optical see-through lets the user see reality through the display itself. Neither implies that World code receives camera images. Where supported, a World can use Client-provided tracking and Spatial Anchors without implementing its own computer vision. With separately approved camera or sensor access, its scripts can instead implement custom recognition or mapping within normal sandbox budgets. They do not replace the trusted device compositor or safety controls.
 
 The access categories remain separate:
 
-- **AR presentation** — show virtual content together with the physical environment, without necessarily exposing images;
-- **spatial data** — receive approved poses, surface queries, planes, meshes, anchors, or depth;
-- **camera access** — receive frames from a selected supported camera;
-- **geolocation** — receive an approved location estimate and its accuracy, not necessarily GPS data.
+- **AR presentation**: show virtual content together with the physical environment, without necessarily exposing images.
+- **spatial data**: receive approved poses, surface queries, planes, meshes, anchors, or depth.
+- **camera access**: receive frames from a selected supported camera.
+- **geolocation**: receive an approved location estimate and its accuracy, not necessarily GPS data.
 
 The Manifest declares required and optional Features and Permissions for the intended path. The Client checks availability and obtains scoped approval where needed, reusing matching grants rather than prompting per frame. A World requesting only presentation receives no implicit camera, room-scan, or location access. An existing grant does not make an unavailable or OS-restricted sensor accessible.
 
 ### Persistent placement
 
-World scripts decide which objects and interactions to remember through ordinary scoped storage or approved backend services. A **Spatial Anchor** associates placement with the physical environment; restoring the object record and finding the same physical place are different operations.
+World scripts decide which objects and interactions to remember through ordinary scoped storage or approved backend services. A **Spatial Anchor** associates placement with the physical environment. Restoring the object record and finding the same physical place are different operations.
 
 Persistent anchors are optional. Saved local coordinates or anchor identifiers do not by themselves promise restoration on another device or after tracking data is deleted. The World can use a supported anchor service, its own approved mapping logic, or ask the user to place the object again. No global map of users' rooms or universal anchor provider is required.
 
@@ -147,9 +147,9 @@ The World may use user-assisted alignment, supported shared anchors, or an optio
 
 ### Privacy, lifecycle, and failure
 
-Camera images, room geometry, persistent place references, and location can reveal sensitive surroundings. Storage and sharing follow the World principal, chosen recipients, and [processing and export boundaries — Local Processing and Network Export](./Features%20and%20Permissions.md). Once scripts receive raw data and arbitrary outgoing channels, a “local only” label cannot guarantee that the data remain local.
+Camera images, room geometry, persistent place references, and location can reveal sensitive surroundings. Storage and sharing follow the World principal, chosen recipients, and [processing and export boundaries: Local Processing and Network Export](./Features%20and%20Permissions.md). Once scripts receive raw data and arbitrary outgoing channels, a “local only” label cannot guarantee that the data remain local.
 
-Tracking loss, recentering, failed anchor restoration, permission revocation, and changes of foreground World need explicit state changes. Unreliable placement is hidden or visibly marked rather than presented as accurate. Background capture follows the ordinary grant and lifecycle policy; switching Worlds does not silently transfer sensors or spatial maps to the next World.
+Tracking loss, recentering, failed anchor restoration, permission revocation, and changes of foreground World need explicit state changes. Unreliable placement is hidden or visibly marked rather than presented as accurate. Background capture follows the ordinary grant and lifecycle policy. Switching Worlds does not silently transfer sensors or spatial maps to the next World.
 
 Missing optional support may use manual placement, a flat view, or a non-AR mode where the creator provides one. If the physical-environment function is essential, the Client explains incompatibility or denied access. It does not silently substitute a more intrusive sensor. Trusted emergency exit and available device safety boundaries remain outside World control.
 

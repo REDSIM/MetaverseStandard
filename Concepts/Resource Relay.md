@@ -25,7 +25,7 @@ A participant announces a Release ID and optional host locations when joining a 
 
 A participant-hosted Avatar or Item may exist only on its owner's device before the session. The relay then acts as a temporary Mirror while the participant is present. Permanent hosting is optional.
 
-For Releases with [Resource Variants — One Release, Optional Variants](./Resource%20Model.md), availability is tracked by Content File and complete content path, not just by the presence of a Release ID. A relay need not cache every alternative. It exposes which declared paths it can serve, accepts or fetches missing files within its policy, and lets each viewer select compatible content. Shared files are stored once; unavailable paths use declared fallbacks or a placeholder, never a silent direct-origin fetch.
+For Releases with [Resource Variants: One Release, Optional Variants](./Resource%20Model.md), availability is tracked by Content File and complete content path, not just by the presence of a Release ID. A relay need not cache every alternative. It exposes which declared paths it can serve, accepts or fetches missing files within its policy, and lets each viewer select compatible content. Shared files are stored once. Unavailable paths use declared fallbacks or a placeholder, never a silent direct-origin fetch.
 
 ## Delivery Flow
 
@@ -46,11 +46,11 @@ For restricted delivery, a cache hit does not remove recipient or session access
 
 Before transfer, the relay advertises:
 
-- maximum Release, file, and expanded sizes;
-- dependency and file-count limits;
-- supported Resource Types and formats;
-- upload bandwidth, timeout, and rate limits;
-- session authorization and per-participant quota;
+- maximum Release, file, and expanded sizes.
+- dependency and file-count limits.
+- supported Resource Types and formats.
+- upload bandwidth, timeout, and rate limits.
+- session authorization and per-participant quota.
 - cache duration and storage policy.
 
 If an Avatar or Item exceeds a limit, the Client explains the failure and uses its declared fallback. The participant should still be able to join unless the session explicitly publishes a stricter rule.

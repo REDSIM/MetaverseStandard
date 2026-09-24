@@ -6,11 +6,11 @@
 
 ## At a Glance
 
-- The user trusts the chosen operating system and Client Core; a World never receives that trust automatically.
+- The user trusts the chosen operating system and Client Core. A World never receives that trust automatically.
 - Shared Worlds should not trust participant Clients to enforce valuable state.
 - Every active application has an Application Principal that owns its storage, Permission Grants, network policy, and audit trail.
 - Avatar and Item code runs in nested Resource Sandboxes with self-scoped authority by default.
-- Signatures establish origin and hashes establish integrity; neither establishes safety.
+- Signatures establish origin and hashes establish integrity. Neither establishes safety.
 - Privacy mechanisms reduce exposure and correlation. They do not promise complete anonymity.
 
 ## Two Trust Perspectives
@@ -23,7 +23,7 @@ The local Client Core and operating system are trusted to isolate Resources, dis
 
 World operators cannot assume that participant Clients run an honest implementation. A Client can lie about local simulation, timing, movement, or inventory. Valuable shared state needs an explicitly authenticated authority, normally an Authoritative World Server or issuer.
 
-An authoritative server can enforce its rules; it does not prove that its operator respects users or handles data honestly.
+An authoritative server can enforce its rules, but this does not prove that its operator respects users or handles data honestly.
 
 ## Security Invariants
 
@@ -45,21 +45,21 @@ An authoritative server can enforce its rules; it does not prove that its operat
 | Custom application protocols cannot bypass network or state-authority policy | [Networking](../Client%20Platform/Networking.md) |
 | Trusted emergency controls remain locally available | [Safety and Moderation](./Safety%20and%20Moderation.md) |
 
-This page owns the threat model; linked domain pages own the detailed behavior so the same rule is not rewritten in several places.
+This page owns the threat model. Linked domain pages own the detailed behavior so the same rule is not rewritten in several places.
 
 ## Application Principal
 
 Every World, installed Overlay App, and independently active Resource needs a security identity comparable to a [web origin](https://html.spec.whatwg.org/multipage/browsers.html#origins). The Application Principal binds:
 
-- persistent storage and caches;
-- Permission Grants and revocation;
-- allowed service destinations and tokens;
-- identity disclosures;
-- inter-application communication;
-- update inheritance;
+- persistent storage and caches.
+- Permission Grants and revocation.
+- allowed service destinations and tokens.
+- identity disclosures.
+- inter-application communication.
+- update inheritance.
 - logs, reputation, and local policy.
 
-The principal should combine a stable Resource ID, verified publisher authority, and a security epoch. A normal update can retain appropriate grants; publisher recovery or a security reset can deliberately break inheritance.
+The principal should combine a stable Resource ID, verified publisher authority, and a security epoch. A normal update can retain appropriate grants. Publisher recovery or a security reset can deliberately break inheritance.
 
 Cross-principal communication is denied unless a typed interface and both relevant policies allow it.
 
@@ -80,41 +80,41 @@ Cross-principal communication is denied unless a typed interface and both releva
 
 ## Network Security
 
-Transport freedom creates risks of unauthorized destination access, cross-principal credential leaks, network-address exposure, and resource exhaustion. The [Network Broker — Network Broker and Trust](../Client%20Platform/Networking.md) owns the detailed controls for all application protocols, including public-service authentication and encryption, destination checks, scoped credentials, and quotas.
+Transport freedom creates risks of unauthorized destination access, cross-principal credential leaks, network-address exposure, and resource exhaustion. The [Network Broker: Network Broker and Trust](../Client%20Platform/Networking.md) owns the detailed controls for all application protocols, including public-service authentication and encryption, destination checks, scoped credentials, and quotas.
 
-Message protocols still need replay handling and application-level authorization. An authenticated connection does not make every received command valid. Direct peers and approved service operators can observe connection metadata; changing transports does not remove that privacy boundary.
+Message protocols still need replay handling and application-level authorization. An authenticated connection does not make every received command valid. Direct peers and approved service operators can observe connection metadata. Changing transports does not remove that privacy boundary.
 
 ## Privacy Model
 
 The Client minimizes data at four points:
 
-1. **Identity** — disclose a guest, pairwise, or selected Profile rather than a universal account by default.
-2. **Sensors** — separate camera, spatial data, tracking, audio, and composition; reduce precision when possible.
-3. **Destinations** — distinguish local processing from sending data to a named operator.
-4. **Context** — keep Worlds, Profiles, Overlay Apps, and storage partitions separate.
+1. **Identity**: disclose a guest, pairwise, or selected Profile rather than a universal account by default.
+2. **Sensors**: separate camera, spatial data, tracking, audio, and composition, and reduce precision when possible.
+3. **Destinations**: distinguish local processing from sending data to a named operator.
+4. **Context**: keep Worlds, Profiles, Overlay Apps, and storage partitions separate.
 
 Exact hardware and feature reporting is bucketed to reduce fingerprinting. Background capture has visible indication. Bystander-sensitive sensors need particularly clear purpose and retention notices.
 
 A **Data Use Notice** describes what a remote operator claims it will do. It is useful for consent and accountability but cannot technically prove deletion or honest behavior.
 
-“Local processing” is an enforceable boundary only when data outputs remain controlled. Giving application code both raw sensor data and arbitrary network access defeats that guarantee. [Capture and export rules — Local Processing and Network Export](../Client%20Platform/Features%20and%20Permissions.md) distinguish mediated operations from this broader access.
+“Local processing” is an enforceable boundary only when data outputs remain controlled. Giving application code both raw sensor data and arbitrary network access defeats that guarantee. [Capture and export rules: Local Processing and Network Export](../Client%20Platform/Features%20and%20Permissions.md) distinguish mediated operations from this broader access.
 
 ## Residual Risks
 
 The standard cannot fully protect against:
 
-- a compromised operating system or chosen Client;
-- screenshots, external recording, or data copied after legitimate decryption;
-- traffic analysis, timing, file sizes, and colluding relays;
-- GPU driver and other shared native-kernel failures;
-- correlation through voice, motion, Avatar, social graph, or behavior;
-- an authorized remote operator misusing data;
-- physical observation of the user or device;
+- a compromised operating system or chosen Client.
+- screenshots, external recording, or data copied after legitimate decryption.
+- traffic analysis, timing, file sizes, and colluding relays.
+- GPU driver and other shared native-kernel failures.
+- correlation through voice, motion, Avatar, social graph, or behavior.
+- an authorized remote operator misusing data.
+- physical observation of the user or device.
 - legal compulsion or provider shutdown.
 
 These limits should be stated directly rather than hidden behind the word “decentralized.”
 
-The goal is layered, testable protection, not a promise of complete safety. Permission prompts, firewalls, signatures, and sandboxing each address different threats; none replaces the others.
+The goal is layered, testable protection, not a promise of complete safety. Permission prompts, firewalls, signatures, and sandboxing each address different threats. None replaces the others.
 
 ## Security Assurance
 

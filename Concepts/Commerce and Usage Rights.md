@@ -26,13 +26,13 @@ These can be combined in one product. A ready-to-use Avatar does not need to inc
 
 An offer explains separately:
 
-- permitted uses: wearing, modification, backup, use across the buyer's accounts, transfer, and redistribution;
-- delivery to other participants so they can see the content, including relay caching, versus giving them independent reuse rights;
-- duration, required accounts and services, export availability, and what survives delisting or service closure;
-- included Releases, updates, support, compatibility, and any third-party dependencies;
+- permitted uses: wearing, modification, backup, use across the buyer's accounts, transfer, and redistribution.
+- delivery to other participants so they can see the content, including relay caching, versus giving them independent reuse rights.
+- duration, required accounts and services, export availability, and what survives delisting or service closure.
+- included Releases, updates, support, compatibility, and any third-party dependencies.
 - refund, revocation, recovery, and dispute conditions.
 
-The buyer can retain the terms accepted at purchase. A later listing edit does not silently replace that recorded agreement. Machine-readable summaries help Clients explain an offer; they do not replace its full terms or resolve legal disputes.
+The buyer can retain the terms accepted at purchase. A later listing edit does not silently replace that recorded agreement. Machine-readable summaries help Clients explain an offer. They do not replace its full terms or resolve legal disputes.
 
 ## Buying and Restoring
 
@@ -46,13 +46,13 @@ The proposed flow is:
 4. If export is included, save a Portable Archive outside disposable caches. A Client can check completeness and explain what can be restored.
 5. Import on another compatible Client using normal validation and the applicable rights policy. Importing does not automatically execute code or restore old device Permission Grants.
 
-A payment receipt is not automatically a portable Entitlement. The future commerce profile needs explicit issuance, retry, refund, and failure behavior; payment processing itself can use existing independent services.
+A payment receipt is not automatically a portable Entitlement. The future commerce profile needs explicit issuance, retry, refund, and failure behavior. Payment processing itself can use existing independent services.
 
 ## Current Proposals
 
 ### Start with a simple portable offer
 
-For the first commerce implementation, recommend ready-to-use downloads with explicit personal backup rights and no recurring shop check for normal local use. Source files can be a separate deliverable; optional Entitlements support participating communities without becoming a platform-wide gate. Service-only products remain possible but are clearly labelled as such.
+For the first commerce implementation, recommend ready-to-use downloads with explicit personal backup rights and no recurring shop check for normal local use. Source files can be a separate deliverable. Optional Entitlements support participating communities without becoming a platform-wide gate. Service-only products remain possible but are clearly labelled as such.
 
 Build on the existing Release, hosting, and import mechanisms, with a small separate offer and rights layer. Defer exclusive resale, complex subscription rules, and privacy-preserving multi-account credentials until their recovery and interoperability behavior is tested. This is a recommended starting point for implementers, not a restriction on what stores may sell.
 
@@ -68,9 +68,9 @@ Entitlements are detached, signed records. Selling to another buyer does not cha
 
 A verifier checks the issuer, scope, subject, and applicable conditions, not merely whether any signature is mathematically valid. If a store issues on a Publisher's behalf, that authority needs to be established by delegation or the verifier's explicit trust policy. Signing the same file under a different name does not reproduce the original issuer's grant. It can still create a new publication that the platform cannot automatically identify as a copy.
 
-For holder-bound rights, the user needs to demonstrate control of the relevant account or key in a way that resists replay. Merely copying somebody's signed receipt is not enough; backing up one's own Entitlement is legitimate and expected. This is separate from decrypting or displaying an Avatar: viewers do not receive the wearer's private identity key. Exact credential, holder-binding, and privacy mechanisms remain open.
+For holder-bound rights, the user needs to demonstrate control of the relevant account or key in a way that resists replay. Merely copying somebody's signed receipt is not enough. Backing up one's own Entitlement is legitimate and expected. This is separate from decrypting or displaying an Avatar: viewers do not receive the wearer's private identity key. Exact credential, holder-binding, and privacy mechanisms remain open.
 
-Worlds, services, and Clients enforce only their chosen policies; World creators are not required to become copyright judges. A participating community might accept rights from selected creators or stores. Another may require no purchase proof. The result is local acceptance, not a global verdict on authenticity.
+Worlds, services, and Clients enforce only their chosen policies. World creators are not required to become copyright judges. A participating community might accept rights from selected creators or stores. Another may require no purchase proof. The result is local acceptance, not a global verdict on authenticity.
 
 Distinguish absent proof, an unrecognized issuer, temporarily unavailable verification, invalid proof, and expired or revoked rights. None alone proves theft. A rejected Avatar or Item should have a clear explanation and a fallback where the World permits one.
 
@@ -86,38 +86,38 @@ The proposed service-dependent path is:
 
 1. The buyer authenticates to the selected issuer through a Client-controlled flow. A display name or supplied Account ID alone is not authentication.
 2. The issuer provides a bounded use proof, or a reference that an authorized verifier can check online. The result identifies the permitted action, Resource or Releases, holder, validity, and intended recipient or session as appropriate.
-3. A Client or World service applying that rights policy verifies the proof. It contacts an accepted issuer when the policy needs an online check; other participants can use issuer-signed evidence or a decision from a verifier they explicitly trust. A participant's unsupported “the store said yes” is not evidence.
+3. A Client or World service applying that rights policy verifies the proof. It contacts an accepted issuer when the policy needs an online check. Other participants can use issuer-signed evidence or a decision from a verifier they explicitly trust. A participant's unsupported “the store said yes” is not evidence.
 4. File access is handled separately. If delivery is restricted, the Resource Relay receives only the scoped authority it needs to retrieve and serve the content, not the buyer's full store credentials. Viewer downloads still follow relay routing.
 
-Checking a proof does not require redownloading a cached Avatar. Conversely, cached files do not satisfy a required rights check. Proof lifetime and any cached verification result follow the declared policy and do not extend a proof beyond its expiry; longer reuse reduces load but delays discovery of revocation. Denial, expiry, or an unavailable issuer produces a stated fallback or access failure, not an accusation of piracy or an unlimited silent extension.
+Checking a proof does not require redownloading a cached Avatar. Conversely, cached files do not satisfy a required rights check. Proof lifetime and any cached verification result follow the declared policy and do not extend a proof beyond its expiry. Longer reuse reduces load but delays discovery of revocation. Denial, expiry, or an unavailable issuer produces a stated fallback or access failure, not an accusation of piracy or an unlimited silent extension.
 
-There is no default public endpoint for asking what any named person bought, and no compulsory request from every viewer to the Avatar's host. Approved online checks can still reveal usage to the issuer or verifier; relay routing alone does not hide that metadata. Endpoint discovery and credentials follow the [platform service](./Platform%20Services.md) and Network Broker boundaries, including checks against arbitrary destinations supplied by another participant.
+There is no default public endpoint for asking what any named person bought, and no compulsory request from every viewer to the Avatar's host. Approved online checks can still reveal usage to the issuer or verifier. Relay routing alone does not hide that metadata. Endpoint discovery and credentials follow the [platform service](./Platform%20Services.md) and Network Broker boundaries, including checks against arbitrary destinations supplied by another participant.
 
 [OAuth token introspection](https://www.rfc-editor.org/rfc/rfc7662.html) is a reference for authorized online status queries and their caching/privacy tradeoffs, not an Avatar licensing protocol to adopt unchanged. Authentication, entitlement meaning, and content delivery still need separate contracts.
 
 ### Extensible claims and chosen trust
 
-An issuer may attach additional claims, such as a creator-declared edition, customization allowance, or service membership. Extensions have distinct names, versions, types, and signed meaning. An unsigned display label is not a verified right. Unknown optional claims can be ignored; an unknown condition required for authorization cannot be treated as satisfied. Extensions never create Client Permissions or arbitrary executable verification code.
+An issuer may attach additional claims, such as a creator-declared edition, customization allowance, or service membership. Extensions have distinct names, versions, types, and signed meaning. An unsigned display label is not a verified right. Unknown optional claims can be ignored. An unknown condition required for authorization cannot be treated as satisfied. Extensions never create Client Permissions or arbitrary executable verification code.
 
-A community chooses which issuers and delegated verifiers it accepts for which claims. Trust in a file host for reliable delivery is not trust in its copyright assertions. A self-hosted creator can be an accepted issuer; a large service can still make mistakes. The core does not assign automatic trust by provider size or prohibit self-hosting.
+A community chooses which issuers and delegated verifiers it accepts for which claims. Trust in a file host for reliable delivery is not trust in its copyright assertions. A self-hosted creator can be an accepted issuer. A large service can still make mistakes. The core does not assign automatic trust by provider size or prohibit self-hosting.
 
 These policies let independent communities develop stricter or looser systems without imposing a global certification authority. They do not guarantee that reputation will eventually eliminate infringement, or that the same claim will be accepted everywhere.
 
 ### Make independence a testable promise
 
-Store independence means the original shop is no longer required; other disclosed dependencies may remain. **Offline restoration** is a stronger promise: the saved Portable Archive and any separately protected holder material support the declared local function without an online shop, license server, or Account Provider. This does not mean that multiplayer works without a session service.
+Store independence means the original shop is no longer required. Other disclosed dependencies may remain. **Offline restoration** is a stronger promise: the saved Portable Archive and any separately protected holder material support the declared local function without an online shop, license server, or Account Provider. This does not mean that multiplayer works without a session service.
 
 The preservation path includes:
 
-- the original Manifest, publication verification material, and every Content File and pinned dependency needed for the declared paths;
-- portable scene and behavior representations, not only device-specific compiled caches;
-- accepted terms and any Entitlement and issuer verification history required by the promised verification policy;
-- any necessary content-access material under the buyer's control, not encrypted files whose only key remains on a vanished server;
+- the original Manifest, publication verification material, and every Content File and pinned dependency needed for the declared paths.
+- portable scene and behavior representations, not only device-specific compiled caches.
+- accepted terms and any Entitlement and issuer verification history required by the promised verification policy.
+- any necessary content-access material under the buyer's control, not encrypted files whose only key remains on a vanished server.
 - a disclosed way to preserve or recover any required holder credentials separately and securely, without putting account secrets into publicly relayed content.
 
-No recurring store login, license heartbeat, or future issuer key fetch can be necessary for that promised independent path. An offer requiring a fresh online revocation check remains service-dependent for that check; a saved signature does not reveal future revocation. Cached key history also cannot establish that an issuer was trustworthy or a key never compromised.
+No recurring store login, license heartbeat, or future issuer key fetch can be necessary for that promised independent path. An offer requiring a fresh online revocation check remains service-dependent for that check. A saved signature does not reveal future revocation. Cached key history also cannot establish that an issuer was trustworthy or a key never compromised.
 
-The practical test is to disable the original services and restore on a clean compatible Client with only the documented backup and recovery material. Failure reveals a dependency to remove or disclose. Archive mechanics and import validation belong to [Publishing and Delivery — Cache and Portable Archives](./Publishing%20and%20Delivery.md).
+The practical test is to disable the original services and restore on a clean compatible Client with only the documented backup and recovery material. Failure reveals a dependency to remove or disclose. Archive mechanics and import validation belong to [Publishing and Delivery: Cache and Portable Archives](./Publishing%20and%20Delivery.md).
 
 Independence preserves the stated function, not every future environment. Old formats may need conversion, vulnerable code may be blocked, and a community may change its admission policy. Updates, online inventories, remote World logic, and support survive only if their own services or preservation arrangements survive.
 
@@ -125,7 +125,7 @@ Independence preserves the stated function, not every future environment. Old fo
 
 Moving between Account Providers while retaining the same identity is distinct from using a genuinely new Account ID. Copying files does not rewrite the subject of an Entitlement.
 
-An offer can allow the buyer to use several accounts or move to a new one. Where proof is required, that needs an explicit mechanism: issuer-assisted rebinding, or a portable holder identity and delegation accepted by verifiers. The former depends on the issuer; the latter needs protected keys, recovery, and privacy rules. No provider-independent rebinding mechanism has been selected yet, so new-account portability is not an automatic promise.
+An offer can allow the buyer to use several accounts or move to a new one. Where proof is required, that needs an explicit mechanism: issuer-assisted rebinding, or a portable holder identity and delegation accepted by verifiers. The former depends on the issuer, while the latter needs protected keys, recovery, and privacy rules. No provider-independent rebinding mechanism has been selected yet, so new-account portability is not an automatic promise.
 
 Transfer to another person and resale are separate rights. An authority can track a unique online right, but cannot prove that a seller deleted previously saved offline files. A product cannot honestly promise both unrestricted permanent offline use and technically enforced removal of all old copies after resale or refund.
 
@@ -151,7 +151,7 @@ These are working distribution patterns, not evidence that any particular anti-p
 - **itch.io:** delivering uploaded files without adding platform DRM shows that payment and file delivery can be separate from execution controls. A store download is not necessarily a complete independent backup. [Creator FAQ](https://itch.io/docs/creators/faq).
 - **VRChat Avatar Marketplace:** purchases provide Avatar-menu access rather than source files. Continued access after creator delisting is a platform policy, not a promise of survival after the platform closes. [Buyer FAQ](https://help.vrchat.com/hc/en-us/articles/41810354825235-Avatar-Marketplace-FAQ).
 - **Steamworks:** an authenticated backend can verify a user's application ownership. This is a precedent for issuer-backed service checks, not verification by nickname or universal proof of creative authorship. [Authentication and ownership guidance](https://partner.steamgames.com/doc/features/auth).
-- **Fab:** its license summary distinguishes source-format access from reference-only access and distinguishes using assets in projects from standalone redistribution. File delivery and allowed uses need separate descriptions; the full applicable terms govern. [License summary](https://www.fab.com/eula).
+- **Fab:** its license summary distinguishes source-format access from reference-only access and distinguishes using assets in projects from standalone redistribution. File delivery and allowed uses need separate descriptions. The full applicable terms govern. [License summary](https://www.fab.com/eula).
 
 ## What Still Needs Specification
 

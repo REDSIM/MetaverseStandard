@@ -7,18 +7,18 @@
 ## At a Glance
 
 - Overlay Apps are launched and controlled by the user through the Client.
-- They are private to the user by default; a World does not automatically see them.
+- They are private to the user by default. A World does not automatically see them.
 - Access to the active World, friends, camera, files, input, or other data requires narrow Permissions.
 - Untrusted Overlay UI is shown inside a Client-controlled frame so it cannot be confused with trusted System UI.
 - Automatic participant content is never allowed to install or launch an Overlay App.
 
 ## Examples
 
-- a floating video or music panel;
-- accessibility captions and translation;
-- a calendar, notes, or communication tool;
-- streaming controls;
-- a World statistics panel using an approved interface;
+- a floating video or music panel.
+- accessibility captions and translation.
+- a calendar, notes, or communication tool.
+- streaming controls.
+- a World statistics panel using an approved interface.
 - developer diagnostics.
 
 These are non-normative examples. The UI and interaction profile is still an open design area.
@@ -31,9 +31,9 @@ The Client can launch it from System UI, a shortcut, a gesture, or an explicit d
 
 Possible presentation forms include:
 
-- a Client-framed 2D panel;
-- a bounded 3D surface or object;
-- an accessibility compositor layer;
+- a Client-framed 2D panel.
+- a bounded 3D surface or object.
+- an accessibility compositor layer.
 - audio-only or background service output.
 
 The first profile should choose a small portable UI model rather than allowing arbitrary native windows.
@@ -42,13 +42,13 @@ The first profile should choose a small portable UI model rather than allowing a
 
 An Overlay App begins with no knowledge of the active World. It may request specific context, for example:
 
-- World Resource ID and display name;
-- session population count;
-- the user’s own position or selected object;
-- a named World integration interface;
+- World Resource ID and display name.
+- session population count.
+- the user’s own position or selected object.
+- a named World integration interface.
 - a user-selected Profile or friend subset.
 
-The Client shows the recipient and scope before granting access. A World may separately approve a two-way integration. Communication uses a typed, versioned interface; it does not expose the World’s memory or unrestricted event stream.
+The Client shows the recipient and scope before granting access. A World may separately approve a two-way integration. Communication uses a typed, versioned interface. It does not expose the World’s memory or unrestricted event stream.
 
 ## Trusted UI Boundary
 

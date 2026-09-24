@@ -9,7 +9,7 @@
 - Every visual Resource provides a standard material fallback.
 - [glTF PBR materials](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#materials) are the leading baseline for portable raster presentation.
 - A custom shader language alone does not define a portable rendering pipeline.
-- Custom graphics use a versioned portable profile prepared for the local graphics API by the Client; content does not need a mandatory build for each OS.
+- Custom graphics use a versioned portable profile prepared for the local graphics API by the Client. Content does not need a mandatory build for each OS.
 - [Slang](https://shader-slang.org/slang/user-guide/) is a promising authoring and cross-compilation candidate, not a mandatory first-version package format.
 - Compute, ray tracing, [CUDA](https://docs.nvidia.com/cuda/cuda-programming-guide/), and vendor features belong to explicit optional profiles with fallbacks.
 
@@ -17,9 +17,9 @@
 
 The design defines one portable baseline and optional profiles:
 
-1. **baseline graphics** — portable meshes, textures, animation, and standard materials;
-2. **portable custom graphics** — a constrained programmable profile;
-3. **advanced extensions** — compute, ray tracing, vendor-specific features, and experimental stages.
+1. **baseline graphics**: portable meshes, textures, animation, and standard materials.
+2. **portable custom graphics**: a constrained programmable profile.
+3. **advanced extensions**: compute, ray tracing, vendor-specific features, and experimental stages.
 
 The standard does not require graphics, collision, and gameplay data to be authored or stored as separate layers. A World may update them together at runtime. Compatibility rules describe observable behavior and fallbacks rather than imposing one content-authoring workflow.
 
@@ -27,12 +27,12 @@ The standard does not require graphics, collision, and gameplay data to be autho
 
 The first Client Profile should define:
 
-- supported glTF/GLB subset and extensions;
-- coordinate system, units, handedness, and transforms;
-- color spaces, alpha behavior, precision, and texture formats;
-- standard physically based materials and lighting inputs;
-- animation and skinning limits;
-- resource binding and memory budgets;
+- supported glTF/GLB subset and extensions.
+- coordinate system, units, handedness, and transforms.
+- color spaces, alpha behavior, precision, and texture formats.
+- standard physically based materials and lighting inputs.
+- animation and skinning limits.
+- resource binding and memory budgets.
 - a safe fallback material for unsupported effects.
 
 This baseline is intentionally less expressive than native engines. It gives every compliant Client something predictable to render.
@@ -41,15 +41,15 @@ This baseline is intentionally less expressive than native engines. It gives eve
 
 Choosing [HLSL](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl), [WGSL](https://www.w3.org/TR/WGSL/), Slang, or another syntax is only one decision. Interoperability also requires:
 
-- render passes and allowed pipeline stages;
-- material-to-shader interface;
-- parameter types, layout, and resource bindings;
-- vertex attributes and coordinate conventions;
-- texture, sampler, buffer, and storage rules;
-- precision and derivative behavior;
-- composition between World, Avatar, Item, and Client effects;
-- supported features and numeric limits;
-- validation, timeout, and workload policy;
+- render passes and allowed pipeline stages.
+- material-to-shader interface.
+- parameter types, layout, and resource bindings.
+- vertex attributes and coordinate conventions.
+- texture, sampler, buffer, and storage rules.
+- precision and derivative behavior.
+- composition between World, Avatar, Item, and Client effects.
+- supported features and numeric limits.
+- validation, timeout, and workload policy.
 - mandatory visual fallback.
 
 Without these contracts, the same source language can still produce different or incompatible results.
@@ -74,21 +74,21 @@ The agreed architecture is:
 
 1. Authoring tools produce shader content conforming to a versioned portable Graphics Profile, plus a standard material fallback.
 2. The Manifest binds shader files, imports, entry points, parameter interfaces, and optional target variants by hash.
-3. The Client selects a compatible path before shader compilation, following [the common compatibility rules — Feature Negotiation](./Features%20and%20Permissions.md).
+3. The Client selects a compatible path before shader compilation, following [the common compatibility rules: Feature Negotiation](./Features%20and%20Permissions.md).
 4. Its implementation translates the portable representation into the local backend's accepted form and lets the platform prepare executable GPU code.
 5. Native compiled results remain disposable local caches, separate from the immutable Release.
 
 The exact portable representation remains open: a restricted source language or a specified intermediate format. An arbitrary compiler's internal module format is not automatically a stable interchange standard. Likewise, [SPIR-V](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html) is not a universal binary accepted by every graphics API.
 
-Publishers may include target-specific shader variants to reduce preparation time. Those variants do not replace the portable path for a Resource claiming portable custom graphics support, and signatures do not exempt them from validation. Standard-material fallback provides basic presentation on Clients without the custom profile; it does not promise to reproduce every effect.
+Publishers may include target-specific shader variants to reduce preparation time. Those variants do not replace the portable path for a Resource claiming portable custom graphics support, and signatures do not exempt them from validation. Standard-material fallback provides basic presentation on Clients without the custom profile. It does not promise to reproduce every effect.
 
-A future graphics API can be supported by adding a Client backend for an existing profile, if its semantics can be implemented. New GPU features still need explicit extensions; neither a translator nor a universal package makes every effect work on all devices. Older APIs may support only a smaller profile or fallback path.
+A future graphics API can be supported by adding a Client backend for an existing profile, if its semantics can be implemented. New GPU features still need explicit extensions. Neither a translator nor a universal package makes every effect work on all devices. Older APIs may support only a smaller profile or fallback path.
 
 ## Compilation and Isolation
 
-Shader input is untrusted even when it was signed by a Publisher. The Client controls the compiler and backend adapter; a Release cannot install a native compiler, driver, or plugin.
+Shader input is untrusted even when it was signed by a Publisher. The Client controls the compiler and backend adapter. A Release cannot install a native compiler, driver, or plugin.
 
-1. Verify selected shader files and their declared imports; no compiler-driven arbitrary network or filesystem access is allowed.
+1. Verify selected shader files and their declared imports. No compiler-driven arbitrary network or filesystem access is allowed.
 2. Validate profile version, language rules, stages, entry points, and static resource bounds.
 3. Compile or translate outside the Client Core in a restricted worker, with time, memory, output-size, and specialization-count budgets.
 4. Check generated parameter layout against the profile's renderer interface. Reflection can map bindings but cannot silently redefine their meaning or grant access to another Resource's buffers.

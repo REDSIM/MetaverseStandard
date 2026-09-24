@@ -34,19 +34,19 @@ This keeps a tracker vendor from defining application semantics and keeps Worlds
 
 A signal definition includes:
 
-- stable name and version;
-- data type, units, range, and coordinate space;
-- timestamp and clock domain;
-- update behavior and expected rate;
-- confidence, validity, and tracking state;
-- privacy class;
+- stable name and version.
+- data type, units, range, and coordinate space.
+- timestamp and clock domain.
+- update behavior and expected rate.
+- confidence, validity, and tracking state.
+- privacy class.
 - fallback or absence behavior.
 
 Candidate families include poses, actions and buttons, analog controls, skeletal joints, face expressions, eye gaze, locomotion, audio controls, haptic requests, environmental measurements, and accessibility commands.
 
 Signals should describe intent where possible. `user.action.primary` is more portable than “button 7,” while raw device channels may remain available to explicitly authorized specialist applications.
 
-For [AR Worlds — XR and Passthrough](./Client%20and%20Runtime.md), spatial interfaces also need explicit reference spaces, transforms, units, timing, and tracking validity. A device may adjust or reset its local origin; the Client reports this rather than treating local coordinates as permanent geographic positions. Camera processing needs supported image geometry and timing, while geolocation needs an accuracy estimate. Exact interfaces remain open; mapping, recognition, and shared-space alignment algorithms are not prescribed.
+For [AR Worlds: XR and Passthrough](./Client%20and%20Runtime.md), spatial interfaces also need explicit reference spaces, transforms, units, timing, and tracking validity. A device may adjust or reset its local origin. The Client reports this rather than treating local coordinates as permanent geographic positions. Camera processing needs supported image geometry and timing, while geolocation needs an accuracy estimate. Exact interfaces remain open. Mapping, recognition, and shared-space alignment algorithms are not prescribed.
 
 ## Device Pairing Versus Application Access
 
@@ -54,25 +54,25 @@ The Client first asks whether a Device Adapter may connect to a particular devic
 
 For example:
 
-1. the user pairs a face tracker with the Client;
-2. the adapter may read only that device;
-3. the Client exposes `face.expression.*` as supported Input Signals;
-4. an Avatar retargeter may use local signals under Client policy;
-5. a World needs a distinct Permission to receive face data; Client-managed transmission also requires an approved recipient.
+1. the user pairs a face tracker with the Client.
+2. the adapter may read only that device.
+3. the Client exposes `face.expression.*` as supported Input Signals.
+4. an Avatar retargeter may use local signals under Client policy.
+5. a World needs a distinct Permission to receive face data. Client-managed transmission also requires an approved recipient.
 
 Pairing never creates a blanket grant to all Worlds.
 
-Derived expressions and raw tracker-camera frames are separate access scopes. After raw data reaches code with arbitrary network access, the Client cannot recognize all subsequent encodings of those data. See [local processing and export boundaries — Local Processing and Network Export](./Features%20and%20Permissions.md).
+Derived expressions and raw tracker-camera frames are separate access scopes. After raw data reaches code with arbitrary network access, the Client cannot recognize all subsequent encodings of those data. See [local processing and export boundaries: Local Processing and Network Export](./Features%20and%20Permissions.md).
 
 ## Adapter Security
 
 A signed or authenticated adapter can still be buggy or malicious. It receives:
 
-- access only to assigned devices or endpoints;
-- no general filesystem or local-network access;
-- bounded CPU, memory, bandwidth, and message rates;
-- explicit schema validation at the Broker boundary;
-- revocable pairing and visible activity;
+- access only to assigned devices or endpoints.
+- no general filesystem or local-network access.
+- bounded CPU, memory, bandwidth, and message rates.
+- explicit schema validation at the Broker boundary.
+- revocable pairing and visible activity.
 - isolation from Account credentials and other applications.
 
 Native vendor libraries should be kept outside the Client Core whenever possible.
@@ -81,11 +81,11 @@ Native vendor libraries should be kept outside the Client Core whenever possible
 
 The first version should adapt proven protocols rather than replace them:
 
-- [OpenXR interaction profiles](https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html) for common XR controllers and tracked interaction;
-- **[HID](https://www.usb.org/hid)** for standard input hardware;
-- **[MIDI](https://midi.org/specs)** for musical and control devices;
-- **[OSC](https://opensoundcontrol.stanford.edu/spec-1_0.html) compatibility** for existing social-XR and creator ecosystems;
-- platform [Bluetooth](https://www.bluetooth.com/specifications/specs/), [USB](https://www.usb.org/documents), sensor, and accessibility APIs;
+- [OpenXR interaction profiles](https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html) for common XR controllers and tracked interaction.
+- **[HID](https://www.usb.org/hid)** for standard input hardware.
+- **[MIDI](https://midi.org/specs)** for musical and control devices.
+- **[OSC](https://opensoundcontrol.stanford.edu/spec-1_0.html) compatibility** for existing social-XR and creator ecosystems.
+- platform [Bluetooth](https://www.bluetooth.com/specifications/specs/), [USB](https://www.usb.org/documents), sensor, and accessibility APIs.
 - narrowly scoped vendor SDK adapters.
 
 A new wire protocol is justified only when multiple transports cannot express a required common lifecycle, discovery, security, or timing property.

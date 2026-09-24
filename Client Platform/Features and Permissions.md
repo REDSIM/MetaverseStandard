@@ -6,10 +6,10 @@
 
 ## At a Glance
 
-- **Features** describe supported functions; **Limits** describe their numeric boundaries.
+- **Features** describe supported functions, while **Limits** describe their numeric boundaries.
 - **Input Signals** describe semantic input available from users or devices.
 - **Permissions** protect sensitive data or actions.
-- A Manifest declaration is only the maximum an application may request; it is not a Permission Grant.
+- A Manifest declaration is only the maximum an application may request. It is not a Permission Grant.
 - Missing optional Features use fallbacks. Denied Permissions remain denied without breaking unrelated behavior.
 
 ## Canonical Distinctions
@@ -30,24 +30,24 @@ The last term is for implementers. Ordinary user-facing documentation can simply
 
 A Release declares:
 
-- required Client Profiles;
-- required Features and minimum Limits;
-- optional Features;
-- variants selected by Features or Limits;
-- a fallback for each optional path;
+- required Client Profiles.
+- required Features and minimum Limits.
+- optional Features.
+- variants selected by Features or Limits.
+- a fallback for each optional path.
 - an explanation when no safe fallback exists.
 
 The Client evaluates a bounded, verified Manifest and any needed dependency Manifests before downloading or expanding heavy content, compiling shaders, or starting untrusted behavior:
 
 1. Check schema and Profile versions, supported formats, required Features, and minimum Limits.
-2. Find complete compatible paths through the declared [Resource Variants — One Release, Optional Variants](../Concepts/Resource%20Model.md) and fallbacks.
-3. Select a path within local memory, download, and execution budgets; quality and energy preferences may influence the choice.
-4. Fetch and validate only the selected files and dependencies. Actual decoded sizes and workloads are checked again; declarations are not proof.
+2. Find complete compatible paths through the declared [Resource Variants: One Release, Optional Variants](../Concepts/Resource%20Model.md) and fallbacks.
+3. Select a path within local memory, download, and execution budgets. Quality and energy preferences may influence the choice.
+4. Fetch and validate only the selected files and dependencies. Actual decoded sizes and workloads are checked again. Declarations are not proof.
 5. Use a declared fallback or report a structured incompatibility if preparation fails. Never activate a partially satisfied path.
 
 The future selection specification needs exact requirement matching, alternative grouping, dependency rules, and failure reasons. Clients may choose different quality levels while agreeing on which paths are compatible.
 
-Feature names are versioned and registered. An unknown required Feature makes the affected path incompatible; launch is blocked only if no complete compatible path remains. Unknown optional Features are treated as unsupported.
+Feature names are versioned and registered. An unknown required Feature makes the affected path incompatible. Launch is blocked only if no complete compatible path remains. Unknown optional Features are treated as unsupported.
 
 ### Optional service assistance
 
@@ -55,7 +55,7 @@ Local selection is the default and works with static hosts, Mirrors, caches, and
 
 A service may help select a declared variant using a minimal compatibility summary: supported Profile versions, relevant Features, accepted encodings, and conservative Limit tiers. The Client verifies the result against the Manifest and local policy. An OS name or graphics API name alone is not a compatibility contract.
 
-Hardware model, driver version, full Client version, and native graphics API are not mandatory disclosures. An explicitly scoped extension may negotiate target-specific details when necessary; the base flow exposes privacy-bucketed results instead of a complete hardware fingerprint.
+Hardware model, driver version, full Client version, and native graphics API are not mandatory disclosures. An explicitly scoped extension may negotiate target-specific details when necessary. The base flow exposes privacy-bucketed results instead of a complete hardware fingerprint.
 
 ### Runtime adaptation
 
@@ -87,12 +87,12 @@ Automatically received Resource Behavior may use the standard self-scoped API wi
 
 A Permission Grant is limited along relevant dimensions:
 
-- **operation** — read, write, capture, transmit, discover, or control;
-- **object** — selected file, device, contact group, spatial region, or service;
-- **duration** — once, while in use, current session, or persistent;
-- **destination** — local processing or named remote operator;
-- **precision** — approximate position versus precise pose, for example;
-- **context** — one World, Profile, Item integration, or Overlay App.
+- **operation**: read, write, capture, transmit, discover, or control.
+- **object**: selected file, device, contact group, spatial region, or service.
+- **duration**: once, while in use, current session, or persistent.
+- **destination**: local processing or named remote operator.
+- **precision**: approximate position versus precise pose, for example.
+- **context**: one World, Profile, Item integration, or Overlay App.
 
 Persistent grants bind to the Application Principal, verified publisher key lineage, security epoch, Permission name, scope, and remote recipient. Updates inherit only what the principal rules explicitly allow. Grants do not transfer through embedding, equipping, copying, or dependency relationships.
 
@@ -102,9 +102,9 @@ The available durations depend on the Permission and OS policy. “Once” needs
 
 | Change | Result |
 | --- | --- |
-| An already declared optional feature is used for the first time | Request a scoped grant at that moment; no new Manifest is needed |
-| The user selects another camera within a declared user-selected-device scope | Re-evaluate the device grant; no new Release is needed |
-| The application needs access beyond its declared maximum | Publish a new verified Release under the current model; do not edit the active Manifest in place |
+| An already declared optional feature is used for the first time | Request a scoped grant at that moment. No new Manifest is needed |
+| The user selects another camera within a declared user-selected-device scope | Re-evaluate the device grant. No new Release is needed |
+| The application needs access beyond its declared maximum | Publish a new verified Release under the current model. Do not edit the active Manifest in place |
 
 Requests are checked against the Release actually running and its Application Principal. A newly downloaded Manifest cannot give old running code extra authority. Updates may reuse unchanged Content Files, so changing the Manifest does not require downloading every asset again.
 
@@ -116,16 +116,16 @@ This is the current **exhaustive-declaration** model. A separately authenticated
 
 The registry will likely need separate entries for:
 
-- camera frames and passthrough composition;
-- microphone capture and voice transmission;
-- eye, face, body, hand, and biometric tracking;
-- spatial mesh, planes, anchors, depth, and room boundaries;
-- selected files and application storage;
-- clipboard and local application integration;
-- network destinations, local-network discovery, Bluetooth, and nearby devices;
-- location and environmental sensors;
-- Profile fields, Account Claims, contacts, friends, private messages, social actions, and Entitlements;
-- active World and session context;
+- camera frames and passthrough composition.
+- microphone capture and voice transmission.
+- eye, face, body, hand, and biometric tracking.
+- spatial mesh, planes, anchors, depth, and room boundaries.
+- selected files and application storage.
+- clipboard and local application integration.
+- network destinations, local-network discovery, Bluetooth, and nearby devices.
+- location and environmental sensors.
+- Profile fields, Account Claims, contacts, friends, private messages, social actions, and Entitlements.
+- active World and session context.
 - notifications, background execution, audio, and haptics.
 
 Broad labels such as “hardware access” are insufficient. Camera access, spatial geometry, and passthrough composition reveal different data and need different controls.
@@ -140,14 +140,14 @@ A firewall or antivirus may add protection, but does not replace these Client ch
 
 Access is separated by what the application receives, not just which physical device produced it:
 
-- raw frames from a selected webcam or headset camera;
-- derived eye gaze, face expressions, hand joints, or body poses;
-- spatial mesh or depth data;
+- raw frames from a selected webcam or headset camera.
+- derived eye gaze, face expressions, hand joints, or body poses.
+- spatial mesh or depth data.
 - passthrough composition without exposing raw camera frames.
 
-Permission to use face tracking does not include its source camera images. Permission for one camera does not include all cameras. Trusted Client UI selects the device and supplies a scoped handle; private device identifiers do not belong in a published Manifest. Unavailable or OS-restricted sources produce a clear failure, not a fallback to a more intrusive source.
+Permission to use face tracking does not include its source camera images. Permission for one camera does not include all cameras. Trusted Client UI selects the device and supplies a scoped handle. Private device identifiers do not belong in a published Manifest. Unavailable or OS-restricted sources produce a clear failure, not a fallback to a more intrusive source.
 
-An [AR World — XR and Passthrough](./Client%20and%20Runtime.md) does not require raw camera access merely to display virtual content over reality. Spatial data and geolocation remain separate declared scopes. Grants cover only the approved operation and lifetime; persistent approval does not mean permanent background capture or permission to publish the environment to other participants.
+An [AR World: XR and Passthrough](./Client%20and%20Runtime.md) does not require raw camera access merely to display virtual content over reality. Spatial data and geolocation remain separate declared scopes. Grants cover only the approved operation and lifetime. Persistent approval does not mean permanent background capture or permission to publish the environment to other participants.
 
 These scopes control what Client APIs disclose. Once a World receives raw images, it may infer geometry, information about people, or location from those images without calling a dedicated spatial or geolocation API. Separate API permissions cannot prevent all such inference. Camera consent therefore explains the sensitivity of the image content, not only the name of the device.
 
@@ -157,13 +157,13 @@ The Client can enforce separate capture and export operations when it retains th
 
 If a World receives raw camera frames and can send arbitrary bytes to its server, it may encode those frames into otherwise permitted traffic. A “local only” label does not prevent this. Technical local-only processing requires Client-owned operations or an isolated processing context with controlled outputs, including storage and inter-application communication. Temporarily disabling the network is insufficient if code can save data and send it later.
 
-Custom raw-data processing remains possible with informed, scoped approval. The Client explains that the application's approved outgoing channels can carry those data; an application promise not to transmit them is not an enforceable guarantee. Exact mediated capture and export interfaces are still proposals.
+Custom raw-data processing remains possible with informed, scoped approval. The Client explains that the application's approved outgoing channels can carry those data. An application promise not to transmit them is not an enforceable guarantee. Exact mediated capture and export interfaces are still proposals.
 
 ## Example: World Photo Booth
 
 This is an illustrative mediated flow, not an API schema. The World runs without camera access. When the user activates the booth, it requests a Client-managed capture from a user-selected camera. The Client handles consent and preview and retains the photo behind an opaque handle. Denial closes the photo feature while the rest of the World continues.
 
-Exporting that photo to the World or a remote recipient is a separate approved operation. Arbitrary World-side processing of raw pixels follows the limits above; it does not inherit the mediated flow's local-only guarantee. A promise that a recipient will delete the image is a **Data Use Notice**, not proof of deletion.
+Exporting that photo to the World or a remote recipient is a separate approved operation. Arbitrary World-side processing of raw pixels follows the limits above. It does not inherit the mediated flow's local-only guarantee. A promise that a recipient will delete the image is a **Data Use Notice**, not proof of deletion.
 
 ## Background and Multi-World Rules
 

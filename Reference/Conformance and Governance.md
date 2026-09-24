@@ -32,15 +32,15 @@ The current vault is primarily Concept and Architecture.
 
 One product may conform to several independent units:
 
-- Client Profile;
-- Resource Type and Manifest version;
-- World behavior host API version;
-- network host API and advertised transport Features;
-- optional Session Profile and its Transport Bindings;
-- World Service interface;
-- Avatar or Item profile;
-- Resource Relay privacy profile;
-- Device Adapter profile;
+- Client Profile.
+- Resource Type and Manifest version.
+- World behavior host API version.
+- network host API and advertised transport Features.
+- optional Session Profile and its Transport Bindings.
+- World Service interface.
+- Avatar or Item profile.
+- Resource Relay privacy profile.
+- Device Adapter profile.
 - optional graphics profile.
 
 This avoids an all-or-nothing “metaverse compatible” badge.
@@ -51,15 +51,15 @@ The platform does not require every World to use one Session Profile. However, a
 
 Stable registries are expected for:
 
-- Client Profiles;
-- Features and Limits;
-- Input Signals;
-- Permissions;
-- Resource Types and Manifest fields;
-- component and host interfaces;
-- service roles and protocol versions;
-- content labels;
-- cryptographic algorithms and canonical encodings;
+- Client Profiles.
+- Features and Limits.
+- Input Signals.
+- Permissions.
+- Resource Types and Manifest fields.
+- component and host interfaces.
+- service roles and protocol versions.
+- content labels.
+- cryptographic algorithms and canonical encodings.
 - extension namespaces.
 
 Unknown optional entries are ignored or disabled safely. Unknown required entries cause a clear compatibility failure. Registration policy should prevent name squatting without requiring one vendor’s approval for experimentation.
@@ -68,15 +68,15 @@ Unknown optional entries are ignored or disabled safely. Unknown required entrie
 
 The first conformance suite should verify that at least two independent Clients can:
 
-1. resolve the same World Address;
-2. fetch one Release from different Mirrors;
-3. compute and verify the same Release ID;
-4. load the same baseline World scene and produce acceptable output;
-5. run the same behavior component through a versioned host API;
-6. operate without an account or network service;
-7. deny undeclared filesystem, network, sensor, and identity access;
-8. use declared fallbacks for unsupported optional Features;
-9. contain malformed content and a crashed World;
+1. resolve the same World Address.
+2. fetch one Release from different Mirrors.
+3. compute and verify the same Release ID.
+4. load the same baseline World scene and produce acceptable output.
+5. run the same behavior component through a versioned host API.
+6. operate without an account or network service.
+7. deny undeclared filesystem, network, sensor, and identity access.
+8. use declared fallbacks for unsupported optional Features.
+9. contain malformed content and a crashed World.
 10. report comparable structured errors.
 
 Manifest and variant-selection tests include a single portable path, shared files with several alternatives, missing files exclusive to an unselected variant, incompatible required formats, and invalid selected files. Selection happens before content decoding or behavior execution. Different compatible quality choices retain the same Release ID.
@@ -93,28 +93,28 @@ Network API tests run both a custom sandboxed protocol and a shared Session Prof
 
 Adaptive pose-profile tests vary forwarding rates and detail levels, lose and reorder updates, change rigs, and reconnect. Different Replication Policies should remain compatible. Tests verify explicit missing-data and recovery rules rather than a specific distance algorithm or fixed tick rate.
 
-A sample World may demonstrate server-authoritative reconciliation; conformance checks safe delivery and scoped state application, not the correctness of one universal prediction algorithm.
+A sample World may demonstrate server-authoritative reconciliation. Conformance checks safe delivery and scoped state application, not the correctness of one universal prediction algorithm.
 
 Tests include:
 
-- valid examples and canonical test vectors;
-- invalid, truncated, oversized, and cyclic content;
-- permission denial and revocation;
-- Resource Sandbox handle isolation and typed World mediation;
-- incompatible versions and missing fallbacks;
-- replay, reconnect, and service failure;
-- resource exhaustion and cancellation;
-- parser, compiler, and protocol fuzz corpora;
+- valid examples and canonical test vectors.
+- invalid, truncated, oversized, and cyclic content.
+- permission denial and revocation.
+- Resource Sandbox handle isolation and typed World mediation.
+- incompatible versions and missing fallbacks.
+- replay, reconnect, and service failure.
+- resource exhaustion and cancellation.
+- parser, compiler, and protocol fuzz corpora.
 - privacy assertions where behavior can be observed.
 
 Visual conformance should focus on defined invariants and tolerances, not pixel-identical output across GPUs.
 
-The later portable raster suite adds parameter-layout agreement across backends, restricted shader imports, bounded compilation and specialization, invalid target code, standard-material fallback, and rebuilding stale native caches. Runtime GPU behavior still needs platform-specific stress testing; passing static validation is not proof against driver failure.
+The later portable raster suite adds parameter-layout agreement across backends, restricted shader imports, bounded compilation and specialization, invalid target code, standard-material fallback, and rebuilding stale native caches. Runtime GPU behavior still needs platform-specific stress testing. Passing static validation is not proof against driver failure.
 
 ## Versioning and Extensions
 
 - Published Releases remain immutable.
-- Shared protocol contracts identify versions through declarations or negotiation before exchanging state that depends on them; not every custom service needs an extra handshake.
+- Shared protocol contracts identify versions through declarations or negotiation before exchanging state that depends on them. Not every custom service needs an extra handshake.
 - Additive optional fields are preferred when old implementations can ignore them safely.
 - A required semantic change receives a new version or Profile.
 - Experimental extensions use scoped namespaces and cannot redefine core behavior.
@@ -125,14 +125,14 @@ The later portable raster suite adds parameter-layout agreement across backends,
 
 A decision proposal should state:
 
-- problem and user need;
-- affected actors and trust boundaries;
-- alternatives and tradeoffs;
-- applicable modern web standards and the reason for reuse, adaptation, or replacement;
-- privacy and security impact;
-- compatibility and migration impact;
-- implementation experience;
-- conformance plan;
+- problem and user need.
+- affected actors and trust boundaries.
+- alternatives and tradeoffs.
+- applicable modern web standards and the reason for reuse, adaptation, or replacement.
+- privacy and security impact.
+- compatibility and migration impact.
+- implementation experience.
+- conformance plan.
 - decision owner and status.
 
 Major changes should require multiple independent implementation attempts before becoming a mandatory core contract. Governance should be vendor-neutral, transparent, and capable of urgent security action without allowing emergency powers to become ordinary product control.
@@ -141,13 +141,13 @@ Major changes should require multiple independent implementation attempts before
 
 The ecosystem needs coordinated but non-centralized support for:
 
-- vulnerability intake and responsible disclosure;
-- identifiers for affected specifications and Releases;
-- signed advisories and local block policy;
-- publisher and account key rotation;
-- dependency and compiler inventories;
-- test corpus updates;
-- time-bounded emergency mitigations;
+- vulnerability intake and responsible disclosure.
+- identifiers for affected specifications and Releases.
+- signed advisories and local block policy.
+- publisher and account key rotation.
+- dependency and compiler inventories.
+- test corpus updates.
+- time-bounded emergency mitigations.
 - post-incident compatibility review.
 
 A revoked Release remains immutable and may remain mirrored. Normal Clients can refuse to activate it, but the protocol cannot erase public copies.
