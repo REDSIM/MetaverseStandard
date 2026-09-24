@@ -80,7 +80,7 @@ Recipient selection cannot grant access to hidden state. Client requests are con
 
 ## Current Proposals: Compact Realtime State
 
-For a reference pose profile, evaluate compact binary updates rather than repeated JSON objects:
+For a reference pose profile, evaluate compact binary updates rather than repeated [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) objects:
 
 - agree coordinate systems, units, rig mappings, and codec versions during setup;
 - use short numeric identifiers, bounded arrays, and explicitly specified position and rotation precision;

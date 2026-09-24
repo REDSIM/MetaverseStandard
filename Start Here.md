@@ -110,15 +110,15 @@ The broader target includes applicable modern web use cases, not only multiplaye
 
 These technologies are candidates, not final commitments:
 
-- **glTF/GLB** for delivered 3D scenes and models, with separate application-level contracts; OpenUSD may be an authoring input rather than a required runtime dependency;
-- **WebAssembly Component Model and WIT** for portable behavior and typed host interfaces;
-- **browser-like brokered networking** with explicit transport Features; HTTPS, WebSocket, and WebTransport are candidates for different uses, not one universal mandatory transport;
+- **[glTF/GLB](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html)** for delivered 3D scenes and models, with separate application-level contracts; [OpenUSD](https://openusd.org/release/intro.html) may be an authoring input rather than a required runtime dependency;
+- **[WebAssembly Component Model](https://github.com/WebAssembly/component-model/blob/main/design/mvp/Explainer.md) and [WIT](https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md)** for portable behavior and typed host interfaces;
+- **browser-like brokered networking** with explicit transport Features; [HTTPS](https://www.rfc-editor.org/rfc/rfc9110.html#section-4.2.2), [WebSocket](https://websockets.spec.whatwg.org/), and [WebTransport](https://www.w3.org/TR/webtransport/) are candidates for different uses, not one universal mandatory transport;
 - **content hashes and signed update records** for immutable Releases and mirrors;
-- **readable JSON Manifests**, with a constrained canonical representation for hashing and signing;
-- **WebGPU-style features and limits** as a model for portable graphics negotiation;
-- **VRM 1.0** as input to a Humanoid Avatar profile;
-- **a versioned portable shader profile with Client-side compilation** for custom graphics; Slang is an authoring and cross-compilation candidate, not an initial mandatory format;
-- **AT Protocol concepts** as input to federated identity design, not a protocol to copy wholesale.
+- **readable [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) Manifests**, with a constrained canonical representation for hashing and signing;
+- **[WebGPU](https://www.w3.org/TR/webgpu/)-style features and limits** as a model for portable graphics negotiation;
+- **[VRM 1.0](https://vrm.dev/en/vrm1/)** as input to a Humanoid Avatar profile;
+- **a versioned portable shader profile with Client-side compilation** for custom graphics; [Slang](https://shader-slang.org/slang/user-guide/) is an authoring and cross-compilation candidate, not an initial mandatory format;
+- **[AT Protocol](https://atproto.com/specs/atp) concepts** as input to federated identity design, not a protocol to copy wholesale.
 
 All unresolved choices are tracked in [Open Decisions and Roadmap](./Reference/Open%20Decisions%20and%20Roadmap.md).
 

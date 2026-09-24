@@ -107,7 +107,7 @@ Stores may offer editable sources, a Portable Archive, service-dependent use, or
 ## Current Proposals
 
 - Make Avatar Core declarative and mandatory.
-- Define a Humanoid Rig by evaluating VRM 1.0 before creating a new schema.
+- Define a Humanoid Rig by evaluating [VRM 1.0](https://vrm.dev/en/vrm1/) before creating a new schema.
 - Defer arbitrary Semantic Rig behavior until common semantic targets and retargeting tests exist.
 - Standardize self-scoped Avatar Behavior on the common Resource Sandbox and behavior ABI.
 

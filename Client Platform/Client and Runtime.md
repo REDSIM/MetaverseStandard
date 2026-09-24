@@ -61,7 +61,7 @@ The implementation may use one operating-system process per World, a process poo
 - native compiled caches are local, disposable, and never accepted as portable authority;
 - Client emergency controls remain responsive under load.
 
-Avatars and Items do not each require a separate OS process. Their code may run as separate WebAssembly components or equivalent compartments inside the World Runtime, with independent memory, principals, quotas, Permission Grants, and Self Handles. Sharing a scheduler or process never implies sharing authority.
+Avatars and Items do not each require a separate OS process. Their code may run as separate [WebAssembly components](https://github.com/WebAssembly/component-model) or equivalent compartments inside the World Runtime, with independent memory, principals, quotas, Permission Grants, and Self Handles. Sharing a scheduler or process never implies sharing authority.
 
 ## Multi-World Lifecycle
 

@@ -7,11 +7,11 @@
 ## At a Glance
 
 - Every visual Resource provides a standard material fallback.
-- glTF PBR materials are the leading baseline for portable raster presentation.
+- [glTF PBR materials](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#materials) are the leading baseline for portable raster presentation.
 - A custom shader language alone does not define a portable rendering pipeline.
 - Custom graphics use a versioned portable profile prepared for the local graphics API by the Client; content does not need a mandatory build for each OS.
-- Slang is a promising authoring and cross-compilation candidate, not a mandatory first-version package format.
-- Compute, ray tracing, CUDA, and vendor features belong to explicit optional profiles with fallbacks.
+- [Slang](https://shader-slang.org/slang/user-guide/) is a promising authoring and cross-compilation candidate, not a mandatory first-version package format.
+- Compute, ray tracing, [CUDA](https://docs.nvidia.com/cuda/cuda-programming-guide/), and vendor features belong to explicit optional profiles with fallbacks.
 
 ## Graphics Profiles
 
@@ -39,7 +39,7 @@ This baseline is intentionally less expressive than native engines. It gives eve
 
 ## What a Portable Shader Profile Must Define
 
-Choosing HLSL, WGSL, Slang, or another syntax is only one decision. Interoperability also requires:
+Choosing [HLSL](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl), [WGSL](https://www.w3.org/TR/WGSL/), Slang, or another syntax is only one decision. Interoperability also requires:
 
 - render passes and allowed pipeline stages;
 - material-to-shader interface;
@@ -64,7 +64,7 @@ Without these contracts, the same source language can still produce different or
 | **Ray Tracing** | Optional ray pipelines | Future Client Profile |
 | **Vendor Extension** | CUDA or device-specific features | Explicitly non-portable with fallback |
 
-WebGPU and WGSL provide a useful model for cross-platform feature negotiation and validation. Slang provides modules, generics, interfaces, reflection, and multiple targets, making it attractive as an authoring source or optional source profile. Target support and feature coverage differ: each candidate toolchain needs a pinned-version test matrix, not an assumption that all its backends are equivalent.
+[WebGPU](https://www.w3.org/TR/webgpu/) and WGSL provide a useful model for cross-platform feature negotiation and validation. Slang provides modules, generics, interfaces, reflection, and multiple targets, making it attractive as an authoring source or optional source profile. Target support and feature coverage differ: each candidate toolchain needs a pinned-version test matrix, not an assumption that all its backends are equivalent.
 
 ## Portable Delivery Contract
 
@@ -78,7 +78,7 @@ The agreed architecture is:
 4. Its implementation translates the portable representation into the local backend's accepted form and lets the platform prepare executable GPU code.
 5. Native compiled results remain disposable local caches, separate from the immutable Release.
 
-The exact portable representation remains open: a restricted source language or a specified intermediate format. An arbitrary compiler's internal module format is not automatically a stable interchange standard. Likewise, SPIR-V is not a universal binary accepted by every graphics API.
+The exact portable representation remains open: a restricted source language or a specified intermediate format. An arbitrary compiler's internal module format is not automatically a stable interchange standard. Likewise, [SPIR-V](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html) is not a universal binary accepted by every graphics API.
 
 Publishers may include target-specific shader variants to reduce preparation time. Those variants do not replace the portable path for a Resource claiming portable custom graphics support, and signatures do not exempt them from validation. Standard-material fallback provides basic presentation on Clients without the custom profile; it does not promise to reproduce every effect.
 

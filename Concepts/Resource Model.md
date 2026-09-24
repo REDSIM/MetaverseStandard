@@ -11,7 +11,7 @@
 - A Release is a signed Manifest plus hash-identified content files. It does not have to be one archive.
 - One Release may be universal within its declared requirements or contain optional Resource Variants; separate desktop and mobile builds are not required.
 - Visual files, behavior modules, metadata, fallbacks, dependencies, and permission declarations belong to the Release.
-- The Manifest is human-readable and available for inspection before activation. JSON is the leading encoding proposal.
+- The Manifest is human-readable and available for inspection before activation. [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) is the leading encoding proposal.
 - Avatar and Item behavior runs in a nested Resource Sandbox with access to its own runtime instance by default.
 - A signed **Publication Record** selects the Resource's current Release. Older Releases remain immutable.
 
@@ -140,7 +140,7 @@ Interaction outside the Resource Sandbox uses a typed request to a World integra
 - Use cryptographic content hashes for Release IDs and content files.
 - Encode Manifests canonically so independent implementations sign and hash the same bytes.
 - Let hosts and mirrors be discovered separately from the signed Release because hashes protect integrity.
-- Use glTF/GLB for delivered 3D scenes while defining the application/component contracts in [Worlds and Sessions](./Worlds%20and%20Sessions.md).
+- Use [glTF/GLB](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) for delivered 3D scenes while defining the application/component contracts in [Worlds and Sessions](./Worlds%20and%20Sessions.md).
 
 Exact addressing, canonical encoding, signatures, dependency rules, and principal derivation are tracked in [Open Decisions and Roadmap](../Reference/Open%20Decisions%20and%20Roadmap.md).
 

@@ -8,8 +8,8 @@
 
 - A World Release contains scene and component data, content files, behavior modules, compatibility requirements, and fallbacks.
 - An [AR experience — XR and Passthrough](../Client%20Platform/Client%20and%20Runtime.md) is an ordinary World using supported presentation and spatial interfaces, not a separate Resource Type.
-- glTF can describe delivered 3D scenes, not just individual models, but it is not a complete World application format.
-- Portable behavior needs a small, versioned host API and a sandbox; WebAssembly alone does not define that API.
+- [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) can describe delivered 3D scenes, not just individual models, but it is not a complete World application format.
+- Portable behavior needs a small, versioned host API and a sandbox; [WebAssembly](https://webassembly.github.io/spec/core/) alone does not define that API.
 - Network transport and state authority are separate choices.
 - Worlds may use custom application protocols through the safe [network host API](../Client%20Platform/Networking.md), or adopt optional shared Session Profiles.
 - Online deployments select the service roles they need; a shared Session Profile describes participating relay and authority roles separately, not as a compulsory bundle.
@@ -54,8 +54,8 @@ These are separate responsibilities, not necessarily separate files or duplicate
 
 ### Current Proposals: glTF and OpenUSD
 
-- Use a specified glTF/GLB subset as the first delivered scene representation. glTF is designed for efficient runtime delivery of scenes and models. See the [Khronos overview](https://www.khronos.org/gltf/).
-- Allow authoring tools to assemble scenes with OpenUSD and export to that representation. OpenUSD offers layers, references, and variants; requiring its full composition system in every Client would expand implementation scope. See the [OpenUSD introduction](https://openusd.org/release/intro.html).
+- Use a specified [glTF/GLB](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) subset as the first delivered scene representation. glTF is designed for efficient runtime delivery of scenes and models. See the [Khronos overview](https://www.khronos.org/gltf/).
+- Allow authoring tools to assemble scenes with [OpenUSD](https://openusd.org/release/intro.html) and export to that representation. OpenUSD offers layers, references, and variants; requiring its full composition system in every Client would expand implementation scope.
 - Do not assume a USD scene can reference glTF content interoperably without an explicit binding and resolver contract. A runtime USD profile would be a separate future decision, not a prerequisite for opening Worlds.
 
 These format choices still need prototype evidence. The agreed direction is to reuse scene formats and add the missing application contracts, not to standardize one editor.
@@ -64,7 +64,7 @@ These format choices still need prototype evidence. The agreed direction is to r
 
 World behavior runs as isolated components with explicit imports and exports. It does not receive operating-system access simply because it was downloaded.
 
-The leading candidate is the [WebAssembly Component Model](https://component-model.bytecodealliance.org/) with **WIT** interfaces because it can describe typed strings, records, resources, errors, and versioned host calls across programming languages. The standard still needs its own narrow interfaces for entities, time, input, audio, networking, storage, and user-approved device access.
+The leading candidate is the [WebAssembly Component Model](https://component-model.bytecodealliance.org/) with **[WIT](https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md)** interfaces because it can describe typed strings, records, resources, errors, and versioned host calls across programming languages. The standard still needs its own narrow interfaces for entities, time, input, audio, networking, storage, and user-approved device access.
 
 General-purpose filesystem and network interfaces are not enabled automatically. A World talks through Client brokers that enforce its Application Principal, Permission Grants, destination policy, quotas, and lifecycle.
 
@@ -202,8 +202,8 @@ Services advertise versioned interfaces. Shared Session Profiles let providers i
 
 ## Current Proposals
 
-- Use glTF/GLB for visual assets.
-- Evaluate WebAssembly Component Model and WIT for behavior ABI.
+- Use [glTF/GLB](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) for visual assets.
+- Evaluate [WebAssembly Component Model](https://github.com/WebAssembly/component-model/blob/main/design/mvp/Explainer.md) and [WIT](https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md) for behavior ABI.
 - Define transport-independent messages for optional shared Session Profiles, then specify interoperable bindings without imposing them on custom application protocols.
 - Describe authority in a state-domain table inside the Session Descriptor.
 - Require a Standalone path for the first conformance World, even if later Worlds may require services.

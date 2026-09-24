@@ -49,7 +49,7 @@ This page owns the threat model; linked domain pages own the detailed behavior s
 
 ## Application Principal
 
-Every World, installed Overlay App, and independently active Resource needs a security identity comparable to a web origin. The Application Principal binds:
+Every World, installed Overlay App, and independently active Resource needs a security identity comparable to a [web origin](https://html.spec.whatwg.org/multipage/browsers.html#origins). The Application Principal binds:
 
 - persistent storage and caches;
 - Permission Grants and revocation;

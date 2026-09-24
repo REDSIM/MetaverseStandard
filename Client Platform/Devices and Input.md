@@ -81,11 +81,11 @@ Native vendor libraries should be kept outside the Client Core whenever possible
 
 The first version should adapt proven protocols rather than replace them:
 
-- [OpenXR interaction profiles](https://www.khronos.org/openxr/) for common XR controllers and tracked interaction;
-- **HID** for standard input hardware;
-- **MIDI** for musical and control devices;
-- **OSC compatibility** for existing social-XR and creator ecosystems;
-- platform Bluetooth, USB, sensor, and accessibility APIs;
+- [OpenXR interaction profiles](https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html) for common XR controllers and tracked interaction;
+- **[HID](https://www.usb.org/hid)** for standard input hardware;
+- **[MIDI](https://midi.org/specs)** for musical and control devices;
+- **[OSC](https://opensoundcontrol.stanford.edu/spec-1_0.html) compatibility** for existing social-XR and creator ecosystems;
+- platform [Bluetooth](https://www.bluetooth.com/specifications/specs/), [USB](https://www.usb.org/documents), sensor, and accessibility APIs;
 - narrowly scoped vendor SDK adapters.
 
 A new wire protocol is justified only when multiple transports cannot express a required common lifecycle, discovery, security, or timing property.

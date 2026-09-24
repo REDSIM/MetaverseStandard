@@ -11,7 +11,7 @@
 - A Client can open a compatible publication without first downloading a provider-specific networking script.
 - Content loading belongs to the interoperable core. Directories, accounts, and social services are optional standardized roles, not mandatory central providers.
 - Supporting a role means following its versioned contract, not merely claiming to provide a similar feature.
-- A standard request does not necessarily require a separate stateful handshake; HTTP request/response may be sufficient.
+- A standard request does not necessarily require a separate stateful handshake; [HTTP](https://www.rfc-editor.org/rfc/rfc9110.html) request/response may be sufficient.
 
 ## Where the Boundary Lies
 
@@ -77,10 +77,10 @@ Failures stay scoped: an unavailable directory does not invalidate an already ve
 
 ## Current Proposals
 
-- Reuse HTTPS and existing web request, authentication, and caching mechanisms where applicable; define the missing platform-specific data contracts.
+- Reuse [HTTPS](https://www.rfc-editor.org/rfc/rfc9110.html#section-4.2.2) and existing web request, authentication, and caching mechanisms where applicable; define the missing platform-specific data contracts.
 - Use the common [Resource Model](./Resource%20Model.md) for Worlds, Avatars, Items, and Overlay Apps instead of four unrelated download protocols.
-- Evaluate OAuth/OpenID Connect-style authorization and WebAuthn-based sign-in through [Web Platform Alignment](../Reference/Web%20Platform%20Alignment.md), without treating them as solutions to all federation or migration questions.
-- Keep standardized platform metadata separate from high-rate gameplay traffic; readable JSON is suitable to evaluate for the former.
+- Evaluate [OAuth](https://www.rfc-editor.org/rfc/rfc6749.html)/[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)-style authorization and [WebAuthn](https://www.w3.org/TR/webauthn-2/)-based sign-in through [Web Platform Alignment](../Reference/Web%20Platform%20Alignment.md), without treating them as solutions to all federation or migration questions.
+- Keep standardized platform metadata separate from high-rate gameplay traffic; readable [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) is suitable to evaluate for the former.
 
 ## Related Topics
 

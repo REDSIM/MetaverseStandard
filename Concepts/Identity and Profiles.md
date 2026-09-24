@@ -140,7 +140,7 @@ An Account Provider may make data available, but the Client remains the local po
 
 - Require guest and pairwise participation in the base identity model.
 - Make federated accounts an optional profile layered above local presence.
-- Borrow design lessons from decentralized identifiers, WebAuthn/passkeys, OAuth-style scoped authorization, and AT Protocol.
+- Borrow design lessons from [decentralized identifiers](https://www.w3.org/TR/did/), [WebAuthn](https://www.w3.org/TR/webauthn-2/)/passkeys, [OAuth](https://www.rfc-editor.org/rfc/rfc6749.html)-style scoped authorization, and [AT Protocol](https://atproto.com/guides/identity).
 - Avoid placing all private account data in a publicly replicated repository.
 
 Identifier methods, key custody, recovery, migration, Claims, and social federation are tracked in [Open Decisions and Roadmap](../Reference/Open%20Decisions%20and%20Roadmap.md).

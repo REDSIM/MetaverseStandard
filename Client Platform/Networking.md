@@ -10,7 +10,7 @@
 - Sandboxed behavior exchanges binary data through the Client's Network Broker, not unrestricted operating-system sockets.
 - Standard Session Profiles provide optional ready-made interoperability; custom application protocols remain possible.
 - Choosing a custom protocol does not bypass Permissions, privacy, budgets, or World authority.
-- WebTransport, WebSocket, and other transport bindings are candidates, not universal requirements.
+- [WebTransport](https://www.w3.org/TR/webtransport/), [WebSocket](https://websockets.spec.whatwg.org/), and other transport bindings are candidates, not universal requirements.
 
 ## Platform Protocols Versus World Protocols
 
@@ -27,7 +27,7 @@ This page describes the safe building blocks used by World protocols and their o
 | **Application protocol** | Message types, serialization, authentication, sessions, and state exchange | A Session Profile or World developer |
 | **Simulation and replication** | Prediction, reconciliation, interest management, update frequency, and quality policy | World and service implementations |
 
-This is low-level enough to build different networking libraries, but not so low-level that every World must implement TLS, congestion control, or platform socket handling. The network API is separate from the scene and behavior APIs used to apply received state.
+This is low-level enough to build different networking libraries, but not so low-level that every World must implement [TLS](https://www.rfc-editor.org/rfc/rfc8446.html), congestion control, or platform socket handling. The network API is separate from the scene and behavior APIs used to apply received state.
 
 ## Network Host API
 
@@ -71,7 +71,7 @@ The Network Broker applies the same policy to built-in and custom protocols:
 
 Endpoint authentication does not establish authority over World state. Likewise, an origin-style application identifier does not prove that a remote Client is honest. Application protocols still authenticate participants and state owners.
 
-For reused web bindings, mapping an Application Principal to a web origin, attaching credentials, and respecting server-side cross-origin rules remain explicit open contracts. User approval of a destination does not settle those rules. HTTP CORS and WebSocket Origin handling need binding-specific definitions; CORS is not a generic rule to copy onto every binary transport.
+For reused web bindings, mapping an Application Principal to a web origin, attaching credentials, and respecting server-side cross-origin rules remain explicit open contracts. User approval of a destination does not settle those rules. HTTP [CORS](https://fetch.spec.whatwg.org/#http-cors-protocol) and [WebSocket Origin handling](https://www.rfc-editor.org/rfc/rfc6455.html#section-10.2) need binding-specific definitions; CORS is not a generic rule to copy onto every binary transport.
 
 Direct peer networking needs an explicit privacy choice; it is not a silent fallback when a relay fails. Approved remote services still see connection metadata. Once code has access to data and an approved destination, a generic byte API cannot prove how that service will use the data. See [Features and Permissions](./Features%20and%20Permissions.md) and [Security and Privacy](../Trust/Security%20and%20Privacy.md).
 
@@ -93,10 +93,10 @@ Fixed-step simulation, rollback, interpolation, and delta-state algorithms are d
 
 These are evaluation directions, not required transports:
 
-- **HTTPS request/response** for services and Content Files.
+- **[HTTPS](https://www.rfc-editor.org/rfc/rfc9110.html#section-4.2.2) request/response** for services and Content Files.
 - **WebSocket over TLS** for binary message-oriented applications using reliable ordered delivery. The [WebSocket standard](https://websockets.spec.whatwg.org/) supports binary messages without exposing raw network access.
 - **WebTransport over HTTP/3** for applications needing streams and datagrams. It carries bytes, not a prescribed pose or JSON format. Its binding and implementation versions need verification before adoption. See [WebTransport](https://www.w3.org/TR/webtransport/) and the [HTTP/3 binding](https://datatracker.ietf.org/doc/draft-ietf-webtrans-http3/).
-- **WebRTC-based interfaces** where media or peer-connectivity requirements justify them, subject to the same privacy policy.
+- **[WebRTC](https://www.w3.org/TR/webrtc/)-based interfaces** where media or peer-connectivity requirements justify them, subject to the same privacy policy.
 
 Core WebAssembly obtains networking through host imports rather than built-in system calls; see its [portability model](https://webassembly.org/docs/portability/). New native transports therefore need an explicit Client extension and interoperability tests. Arbitrary TCP/UDP socket access is not part of the default sandbox contract.
 

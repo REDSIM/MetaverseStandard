@@ -119,8 +119,8 @@ Where the terms allow rehosting, the user can serve the same verified Release fr
 
 - Content-addressed storage for immutable files.
 - A signed, mutable Publication Record for publisher authority and the current Release.
-- [TUF](https://theupdateframework.io/)-style key roles and recovery concepts for secure updates.
-- HTTP-compatible Resource Hosts and Mirrors for easy deployment.
+- [TUF](https://theupdateframework.github.io/specification/latest/)-style key roles and recovery concepts for secure updates.
+- [HTTP](https://www.rfc-editor.org/rfc/rfc9110.html)-compatible Resource Hosts and Mirrors for easy deployment.
 - Ordinary cached relays plus an optional high-privacy retrieval profile.
 - Session-scoped participant uploads as an alternative to permanent Resource hosting.
 

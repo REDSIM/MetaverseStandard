@@ -46,15 +46,15 @@ These recommendations refine the original idea where a direct implementation wou
 | --- | --- | --- |
 | R-01 | Make a global account optional; support guest and pairwise identity | Mandatory global identity creates unnecessary tracking and excludes offline use |
 | R-02 | Define a small core and move rich systems into Profiles | One first version cannot reliably standardize an engine, identity network, economy, moderation network, and XR operating shell at once |
-| R-03 | Add an Application Principal similar to a web origin | Storage, grants, network access, updates, and IPC need one security owner |
+| R-03 | Add an Application Principal similar to a [web origin](https://html.spec.whatwg.org/multipage/browsers.html#origins) | Storage, grants, network access, updates, and IPC need one security owner |
 | R-04 | Separate Features, Limits, Input Signals, Permissions, and Permission Grants | “Capability” previously mixed technical support with user consent |
-| R-05 | Use glTF for delivered scenes, not the whole World model; keep OpenUSD an optional authoring input | Application semantics need additional contracts, without requiring separate files or another scene tree |
-| R-06 | Evaluate WebAssembly Component Model with narrow WIT host interfaces | Core Wasm alone does not define typed host APIs, lifecycle, resources, or async behavior |
+| R-05 | Use [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) for delivered scenes, not the whole World model; keep [OpenUSD](https://openusd.org/release/intro.html) an optional authoring input | Application semantics need additional contracts, without requiring separate files or another scene tree |
+| R-06 | Evaluate [WebAssembly Component Model](https://github.com/WebAssembly/component-model/blob/main/design/mvp/Explainer.md) with narrow [WIT](https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md) host interfaces | Core Wasm alone does not define typed host APIs, lifecycle, resources, or async behavior |
 | R-08 | Separate transport topology from authority per state domain | Relaying messages does not prevent cheating or define shared state ownership |
 | R-10 | Specify isolation outcomes, not one process per World | Desktop, mobile, browser, and System Clients require different safe implementations |
 | R-11 | Separate World execution, presentation, and session-presence lifecycle | One “background” state cannot express all multi-World behavior clearly |
-| R-12 | Require baseline materials before custom shaders; keep Slang a candidate | A language does not by itself define a portable render pipeline, and advanced GPU code raises risk |
-| R-13 | Standardize semantic Device Broker signals before a new wire protocol | OpenXR, HID, MIDI, OSC, and vendor adapters already solve different transport layers |
+| R-12 | Require baseline materials before custom shaders; keep [Slang](https://shader-slang.org/slang/user-guide/) a candidate | A language does not by itself define a portable render pipeline, and advanced GPU code raises risk |
+| R-13 | Standardize semantic Device Broker signals before a new wire protocol | [OpenXR](https://registry.khronos.org/OpenXR/), [HID](https://www.usb.org/hid), [MIDI](https://midi.org/specs), [OSC](https://opensoundcontrol.stanford.edu/spec-1_0.html), and vendor adapters already solve different transport layers |
 | R-14 | Promise explicit Item portability levels, not universal behavior | Complex behavior cannot transfer without common physics, interaction, and authority rules |
 | R-15 | Show Overlay Apps in Client-controlled frames | Untrusted UI must remain visibly separate from System UI |
 | R-16 | State privacy relay assumptions and residual metadata | Relays reduce IP exposure but do not eliminate traffic analysis or operator collusion |
@@ -66,16 +66,16 @@ These recommendations refine the original idea where a direct implementation wou
 | D-001 | Project charter, use cases, non-goals, and Core 3D boundary | Adopt the MVP below | Critical |
 | D-002 | World Address, deep links, and resolver behavior | Domain-based paths or provider-supplied addresses, independent Resource identity, signed resolution, and offline form; exact syntax open | Critical |
 | D-003 | Application Principal and publisher security epoch | Resource ID + verified publisher lineage + epoch | Critical |
-| D-004 | Manifest encoding, Release ID, signatures, variants, and Publication Record | Strict readable JSON + JCS candidate; detached signature binding without self-reference; hash-bound files and variants, pinned dependencies | Critical |
+| D-004 | Manifest encoding, Release ID, signatures, variants, and Publication Record | Strict readable [JSON](https://www.rfc-editor.org/rfc/rfc8259.html) + [JCS](https://www.rfc-editor.org/rfc/rfc8785.html) candidate; detached signature binding without self-reference; hash-bound files and variants, pinned dependencies | Critical |
 | D-005 | Core 3D Client Profile, Features, Limits, selection, and fallbacks | Manifest-first local selection; optional minimal service negotiation; baseline from prototype limits | Critical |
 | D-006 | World scene and component model | Defined glTF subset and component binding; optional OpenUSD authoring; no mandatory visual/collision separation | Critical |
-| D-007 | Behavior component ABI and host lifecycle | WebAssembly Component Model + versioned WIT interfaces; no ambient general WASI | Critical |
+| D-007 | Behavior component ABI and host lifecycle | WebAssembly Component Model + versioned WIT interfaces; no ambient general [WASI](https://wasi.dev/) | Critical |
 | D-008 | Permission registry, prompt rules, grants, updates, and revocation | Declared maximum + runtime request + scoped handles; device selection and capture/export boundaries; new Release for expanded declarations, live amendments still open | Critical |
 | D-009 | Optional Session Profiles, descriptors, service roles, messages, and Transport Bindings | Shared contracts where chosen; custom protocols over the same broker API; no universal realtime transport | High |
-| D-010 | Account ID method, migration, recovery, Claims, social graph, and multi-presence invitations | Guest/pairwise base; person-directed Join Requests and session-specific Invitations; test AT Protocol ideas without inheriting public repository assumptions | High |
-| D-011 | Avatar Core, Humanoid Rig, and Avatar Behavior host API | Prototype a VRM 1.0-compatible subset plus the common Resource Sandbox | High |
+| D-010 | Account ID method, migration, recovery, Claims, social graph, and multi-presence invitations | Guest/pairwise base; person-directed Join Requests and session-specific Invitations; test [AT Protocol](https://atproto.com/specs/atp) ideas without inheriting public repository assumptions | High |
+| D-011 | Avatar Core, Humanoid Rig, and Avatar Behavior host API | Prototype a [VRM 1.0](https://vrm.dev/en/vrm1/)-compatible subset plus the common Resource Sandbox | High |
 | D-012 | Resource Relay upload, admission, cache, privacy levels, and routing policy | Remote-host fetch and participant upload through one cached relay protocol; stronger optional two-party mode | High |
-| D-013 | Baseline renderer, portable shader representation, parameter ABI, and compilation | glTF PBR first; Client-side preparation; evaluate constrained WGSL and Slang with backend conformance evidence | Medium |
+| D-013 | Baseline renderer, portable shader representation, parameter ABI, and compilation | glTF PBR first; Client-side preparation; evaluate constrained [WGSL](https://www.w3.org/TR/WGSL/) and Slang with backend conformance evidence | Medium |
 | D-014 | Item attachment, Resource Behavior, World integration, and persistent state | Common self-scoped behavior first; issuer state separate from files; shared commerce model in D-027 | Medium |
 | D-015 | Overlay App portable UI and World integration | Client-framed panel plus typed context interface | Medium |
 | D-016 | Device signal registry and Adapter packaging | Semantic Broker API over existing transports | Medium |

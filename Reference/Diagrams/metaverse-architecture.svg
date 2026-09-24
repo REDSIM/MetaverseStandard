@@ -5,37 +5,37 @@
   <desc id="description">Three deployment lanes show a local user's Client, independent provider roles, and other participants' Clients. Each Client contains trusted Core and System UI, validation and storage support, isolated World Runtimes with Avatar and Item behavior sandboxes, independent Overlay Apps, and Client-owned brokers and platform adapters. All external communication crosses a Client-owned Network Broker. Resource Hosts and Mirrors provide immutable Release data; a Resource Relay fetches that data or accepts a local user's upload, then delivers it to other viewers. Separate session coordination, message, media, and optional authoritative backend roles exchange data through the same broker boundary. Optional directory, account and social, store and rights, and moderation services remain independent. Boxes describe logical roles, not mandatory operating-system processes; arrows show communication, not authority or inherited permissions.</desc>
   <defs>
     <style>
-      text { font-family: Arial, Helvetica, sans-serif; fill: #1c2b43; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #d7dee8; }
       .heading { font-size: 32px; font-weight: 700; }
-      .subtitle { font-size: 19px; fill: #52627a; }
+      .subtitle { font-size: 19px; fill: #afbdd0; }
       .lane-title { font-size: 23px; font-weight: 700; }
       .card-title { font-size: 20px; font-weight: 700; }
       .small-title { font-size: 18px; font-weight: 700; }
       .body { font-size: 17px; }
-      .small { font-size: 15px; fill: #52627a; }
-      .tiny { font-size: 14px; fill: #52627a; }
-      .port { font-size: 14px; font-weight: 700; fill: #334b6e; text-anchor: middle; }
+      .small { font-size: 15px; fill: #afbdd0; }
+      .tiny { font-size: 14px; fill: #afbdd0; }
+      .port { font-size: 14px; font-weight: 700; fill: #d0def0; text-anchor: middle; }
       .flow-label { font-size: 13px; font-weight: 700; text-anchor: middle; }
-      .lane { fill: #ffffff; stroke: #d3dcea; stroke-width: 1.5; }
-      .trusted { fill: #eaf2ff; stroke: #719bd7; stroke-width: 1.5; }
-      .support { fill: #f1f5fa; stroke: #adbbce; stroke-width: 1.5; }
-      .sandbox { fill: #f7f2ff; stroke: #ac91ce; stroke-width: 1.5; }
-      .nested { fill: #ffffff; stroke: #bda6d9; stroke-width: 1.3; }
-      .service { fill: #eff8f7; stroke: #8ebbb4; stroke-width: 1.5; }
-      .optional { fill: #fafcfe; stroke: #a9b7cb; stroke-width: 1.5; stroke-dasharray: 6 4; }
-      .content-flow { fill: none; stroke: #336bd6; stroke-width: 2.7; }
-      .session-flow { fill: none; stroke: #0a817d; stroke-width: 2.7; }
-      .media-flow { fill: none; stroke: #b77616; stroke-width: 2.7; }
-      .local-flow { fill: none; stroke: #708199; stroke-width: 1.8; }
-      .optional-flow { fill: none; stroke: #708199; stroke-width: 2; stroke-dasharray: 6 5; }
+      .lane { fill: #161b22; stroke: #394658; stroke-width: 1.5; }
+      .trusted { fill: #1b2a3d; stroke: #55789f; stroke-width: 1.5; }
+      .support { fill: #1e2631; stroke: #4d5b6d; stroke-width: 1.5; }
+      .sandbox { fill: #292338; stroke: #7d6699; stroke-width: 1.5; }
+      .nested { fill: #211e2d; stroke: #7f6899; stroke-width: 1.3; }
+      .service { fill: #182d2d; stroke: #477873; stroke-width: 1.5; }
+      .optional { fill: #1b222c; stroke: #607084; stroke-width: 1.5; stroke-dasharray: 6 4; }
+      .content-flow { fill: none; stroke: #80aeed; stroke-width: 2.7; }
+      .session-flow { fill: none; stroke: #5ecbc0; stroke-width: 2.7; }
+      .media-flow { fill: none; stroke: #e9b45f; stroke-width: 2.7; }
+      .local-flow { fill: none; stroke: #99a8be; stroke-width: 1.8; }
+      .optional-flow { fill: none; stroke: #99a8be; stroke-width: 2; stroke-dasharray: 6 5; }
     </style>
-    <marker id="blue-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#336bd6"/></marker>
-    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#0a817d"/></marker>
-    <marker id="amber-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#b77616"/></marker>
-    <marker id="grey-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#708199"/></marker>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#80aeed"/></marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#5ecbc0"/></marker>
+    <marker id="amber-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#e9b45f"/></marker>
+    <marker id="grey-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 8 5 L 0 9 Z" fill="#99a8be"/></marker>
   </defs>
 
-  <rect width="1880" height="1500" fill="#f5f7fb"/>
+  <rect width="1880" height="1500" fill="#0d1117"/>
   <text x="40" y="58" class="heading">One platform, independent roles</text>
   <text x="40" y="92" class="subtitle">Content is downloaded; running copies are isolated locally; selected services connect participants.</text>
   <text x="40" y="123" class="small">Concept architecture · A possible online deployment, not a required process layout or universal network topology</text>
@@ -119,12 +119,12 @@
   <text x="686" y="587" class="tiny" text-anchor="middle">lifecycle</text>
   <text x="686" y="609" class="tiny" text-anchor="middle">revocation</text>
   <text x="686" y="1141" class="tiny" text-anchor="middle">local service</text>
-  <rect x="646" y="314" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="333" class="port">files</text>
-  <rect x="646" y="488" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="507" class="port">resources</text>
-  <rect x="646" y="663" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="682" class="port">join</text>
-  <rect x="646" y="798" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="817" class="port">messages</text>
-  <rect x="646" y="933" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="952" class="port">media</text>
-  <rect x="646" y="1073" width="81" height="28" rx="7" fill="#ffffff"/><text x="686" y="1092" class="port">services</text>
+  <rect x="646" y="314" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="333" class="port">files</text>
+  <rect x="646" y="488" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="507" class="port">resources</text>
+  <rect x="646" y="663" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="682" class="port">join</text>
+  <rect x="646" y="798" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="817" class="port">messages</text>
+  <rect x="646" y="933" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="952" class="port">media</text>
+  <rect x="646" y="1073" width="81" height="28" rx="7" fill="#243246"/><text x="686" y="1092" class="port">services</text>
 
   <!-- Provider roles: content first, then independent session functions. -->
   <rect x="840" y="267" width="560" height="108" rx="10" class="service"/>
@@ -168,12 +168,12 @@
   <rect x="1500" y="245" width="83" height="922" rx="10" class="trusted"/>
   <text x="1541" y="272" class="small" text-anchor="middle">Network</text>
   <text x="1541" y="295" class="small" text-anchor="middle">Broker</text>
-  <rect x="1508" y="314" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="333" class="port">files</text>
-  <rect x="1508" y="488" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="507" class="port">content</text>
-  <rect x="1508" y="663" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="682" class="port">join</text>
-  <rect x="1508" y="798" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="817" class="port">events</text>
-  <rect x="1508" y="933" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="952" class="port">media</text>
-  <rect x="1508" y="1073" width="67" height="28" rx="7" fill="#ffffff"/><text x="1541" y="1092" class="port">APIs</text>
+  <rect x="1508" y="314" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="333" class="port">files</text>
+  <rect x="1508" y="488" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="507" class="port">content</text>
+  <rect x="1508" y="663" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="682" class="port">join</text>
+  <rect x="1508" y="798" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="817" class="port">events</text>
+  <rect x="1508" y="933" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="952" class="port">media</text>
+  <rect x="1508" y="1073" width="67" height="28" rx="7" fill="#243246"/><text x="1541" y="1092" class="port">APIs</text>
   <text x="1541" y="1141" class="tiny" text-anchor="middle">local</text>
 
   <rect x="1601" y="245" width="219" height="98" rx="10" class="trusted"/>
@@ -211,35 +211,35 @@
 
   <!-- External communication terminates at the Network Broker rails. -->
   <path d="M 840 328 L 740 328" class="content-flow" marker-end="url(#blue-arrow)"/>
-  <text x="789" y="316" class="flow-label" fill="#336bd6">files</text>
+  <text x="789" y="316" class="flow-label" fill="#80aeed">files</text>
   <path d="M 1400 328 L 1498 328" class="content-flow" marker-end="url(#blue-arrow)"/>
-  <text x="1449" y="316" class="flow-label" fill="#336bd6">files</text>
+  <text x="1449" y="316" class="flow-label" fill="#80aeed">files</text>
 
   <path d="M 740 502 L 838 502" class="content-flow" marker-start="url(#blue-arrow)" marker-end="url(#blue-arrow)"/>
-  <text x="789" y="481" class="flow-label" fill="#336bd6">local upload</text>
-  <text x="789" y="531" class="flow-label" fill="#336bd6">or download</text>
+  <text x="789" y="481" class="flow-label" fill="#80aeed">local upload</text>
+  <text x="789" y="531" class="flow-label" fill="#80aeed">or download</text>
   <path d="M 1400 502 L 1498 502" class="content-flow" marker-end="url(#blue-arrow)"/>
-  <text x="1449" y="481" class="flow-label" fill="#336bd6">serve other</text>
-  <text x="1449" y="531" class="flow-label" fill="#336bd6">viewers</text>
+  <text x="1449" y="481" class="flow-label" fill="#80aeed">serve other</text>
+  <text x="1449" y="531" class="flow-label" fill="#80aeed">viewers</text>
 
   <path d="M 740 677 L 838 677" class="session-flow" marker-start="url(#teal-arrow)" marker-end="url(#teal-arrow)"/>
-  <text x="789" y="665" class="flow-label" fill="#0a817d">join</text>
+  <text x="789" y="665" class="flow-label" fill="#5ecbc0">join</text>
   <path d="M 1402 677 L 1498 677" class="session-flow" marker-start="url(#teal-arrow)" marker-end="url(#teal-arrow)"/>
-  <text x="1449" y="665" class="flow-label" fill="#0a817d">join</text>
+  <text x="1449" y="665" class="flow-label" fill="#5ecbc0">join</text>
 
   <path d="M 740 812 L 838 812" class="session-flow" marker-start="url(#teal-arrow)" marker-end="url(#teal-arrow)"/>
-  <text x="789" y="790" class="flow-label" fill="#0a817d">poses /</text>
-  <text x="789" y="840" class="flow-label" fill="#0a817d">events</text>
+  <text x="789" y="790" class="flow-label" fill="#5ecbc0">poses /</text>
+  <text x="789" y="840" class="flow-label" fill="#5ecbc0">events</text>
   <path d="M 1402 812 L 1498 812" class="session-flow" marker-start="url(#teal-arrow)" marker-end="url(#teal-arrow)"/>
-  <text x="1449" y="790" class="flow-label" fill="#0a817d">poses /</text>
-  <text x="1449" y="840" class="flow-label" fill="#0a817d">events</text>
+  <text x="1449" y="790" class="flow-label" fill="#5ecbc0">poses /</text>
+  <text x="1449" y="840" class="flow-label" fill="#5ecbc0">events</text>
 
   <path d="M 740 947 L 838 947" class="media-flow" marker-start="url(#amber-arrow)" marker-end="url(#amber-arrow)"/>
-  <text x="789" y="927" class="flow-label" fill="#b77616">voice /</text>
-  <text x="789" y="975" class="flow-label" fill="#b77616">media</text>
+  <text x="789" y="927" class="flow-label" fill="#e9b45f">voice /</text>
+  <text x="789" y="975" class="flow-label" fill="#e9b45f">media</text>
   <path d="M 1402 947 L 1498 947" class="media-flow" marker-start="url(#amber-arrow)" marker-end="url(#amber-arrow)"/>
-  <text x="1449" y="927" class="flow-label" fill="#b77616">voice /</text>
-  <text x="1449" y="975" class="flow-label" fill="#b77616">media</text>
+  <text x="1449" y="927" class="flow-label" fill="#e9b45f">voice /</text>
+  <text x="1449" y="975" class="flow-label" fill="#e9b45f">media</text>
 
   <path d="M 740 1087 L 838 1087" class="optional-flow" marker-start="url(#grey-arrow)" marker-end="url(#grey-arrow)"/>
   <text x="789" y="1074" class="flow-label">app data</text>

@@ -183,7 +183,7 @@ Exporting that photo to the World or a remote recipient is a separate approved o
 ## Current Proposals
 
 - Maintain separate registries for Profiles, Features, Limits, Input Signals, and Permissions.
-- Follow WebGPU’s general model of required features plus numeric limits, with privacy-preserving buckets.
+- Follow [WebGPU](https://www.w3.org/TR/webgpu/)’s general model of required features plus numeric limits, with privacy-preserving buckets.
 - Use runtime handles so approved access is explicit and revocable instead of being a global boolean.
 - Adapt the separation between permission state and feature-specific access in the [W3C Permissions specification](https://www.w3.org/TR/permissions/), and device selection and capture controls in [Media Capture and Streams](https://www.w3.org/TR/mediacapture-streams/). These are references, not claims of identical APIs or universal device support.
 
