@@ -1,10 +1,42 @@
 # Open Metaverse Standard
 
-An open, provider-independent platform for interactive Worlds, portable Avatars and Items, and compatible Clients across desktop, mobile, VR, and AR.
+An open-standard proposal for a **spatial Web** — built around places, people, physical interaction, and multiplayer, across desktop, mobile, VR, and AR.
 
-The idea is to make interactive spaces work more like the web: anyone can build a Client, publish a World, or operate compatible services. Users should not need one company's account, hosting, store, or runtime to participate.
+Imagine entering a game, meeting friends, or opening a shared workspace as easily as visiting a website. You choose the Client you use, creators choose how to build and host their experiences, and neither needs to belong to the same company's platform.
 
 This repository documents the **concept and architecture**. It is not yet a finished technical specification, working engine, or production-ready protocol. Proposed technologies and unresolved decisions are marked as such.
+
+## A Web You Can Enter
+
+The modern web is the reference: a shared foundation on which independent applications and services can be built. Here, that model extends into interactive space.
+
+| On the web | In this proposal |
+| --- | --- |
+| Websites and web applications | **[Worlds](./Concepts/Worlds%20and%20Sessions.md)** — interactive places, games, and applications |
+| Web browsers | **[Clients](./Client%20Platform/Client%20and%20Runtime.md)** — user-chosen applications that open Worlds, render them, and protect the device |
+| Links between pages and applications | **[World Addresses](./Concepts/Finding%20Worlds.md) and [Portals](./Concepts/Worlds%20and%20Sessions.md)** — ways to discover and move between experiences |
+
+People are more than visitors behind a cursor. The platform is designed around user-controlled identity, Avatars, voice, shared presence, and interaction through hands, controllers, or other supported inputs. Participants could pick up objects, build together, or share a space that extends into their physical surroundings through AR. Desktop and mobile participation remain part of the same vision; a headset is not required for every experience.
+
+Profiles, friendships, and compatible portable content should not be trapped inside one service. Users choose what to carry or disclose across Worlds, while each World retains its own rules and supported interactions.
+
+The vision is not limited to VR, AR, or desktop applications. It is a general-purpose platform intended to support the breadth of modern computing through open, extensible interfaces: spatial and flat interfaces, media, networking, data processing, connected devices, and independently developed backends. AR experiences are one possibility developers can build, not a separate closed platform. There should be no fixed catalogue of what creators are allowed to make; practical limits come from supported interfaces, hardware, security, and user consent, rather than an artificially narrow set of use cases.
+
+## Open Infrastructure, Not One Company's Platform
+
+The ambition is broader than one social VR application or a collection of spaces inside a proprietary service. It is a shared application platform, closer in scope to the modern web: content formats, execution, identity, communication, discovery, and device access working together through open contracts.
+
+Anyone should be able to implement a Client, publish a World, self-host, or offer compatible services. Identity, content hosting, search, multiplayer services, and stores can have independent providers. No single company should own the network, control its only entry point, or require everyone to use its account system.
+
+The goal is an accessible, distributed ecosystem with an open foundation, not mandatory proprietary infrastructure. Independent creators, communities, and businesses can build on it without becoming the owners of the platform as a whole.
+
+## A Foundation for Future Games and XR Devices
+
+In the long term, developers could target the Metaverse standard when creating new games and experiences, much as developers target the web today. Worlds need not be social hubs: they could be complete single-player or multiplayer games, simulations, creative tools, or everyday applications, with their own logic and backends. The ambition is broad enough for new games of any genre; actual compatibility will depend on the Features, performance, and interfaces the evolving standard can support.
+
+A Client could remain an ordinary application on a computer or phone, or become the main interface of an XR headset: a high-level environment above an operating system such as Linux, from which users open Worlds and manage their digital lives. These are two ways to deliver the same platform, not a requirement to replace the underlying OS.
+
+This is the long-term direction. The first milestone is smaller and testable: independently built Clients safely opening and running the same World.
 
 ## What the Project Covers
 
