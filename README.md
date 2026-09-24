@@ -52,7 +52,7 @@ This is the long-term direction. The first milestone is smaller and testable: in
 | --- | --- |
 | Understand the idea without implementation details | [Start Here](./Start%20Here.md) |
 | See the independent components and where they run | [Architecture Overview](./Architecture%20Overview.md), including the [SVG system map](./Reference/Diagrams/metaverse-architecture.svg) |
-| Explore the detailed topics | The reading guide in [Start Here](./Start%20Here.md) |
+| Browse all documentation in reading order | [Start Here: Table of Contents](./Start%20Here.md) |
 | Look up a term | [Glossary](./Reference/Glossary.md) |
 | See what is settled, proposed, or missing | [Open Decisions and Roadmap](./Reference/Open%20Decisions%20and%20Roadmap.md) |
 | Suggest a change | [Contributing](./CONTRIBUTING.md) |

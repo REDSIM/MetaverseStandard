@@ -126,34 +126,59 @@ These technologies are candidates, not final commitments:
 
 All unresolved choices are tracked in [Open Decisions and Roadmap](./Reference/Open%20Decisions%20and%20Roadmap.md).
 
-## Read Next
+## Table of Contents
 
-### Understand the concept
+All documentation pages are listed below in a suggested reading order. Start with the overview, follow the user experience, then explore how the platform works. Each topic begins with a plain-language summary before its deeper sections. Reference pages can be consulted at any point. Repository guidance is listed separately at the end and is not part of the standard.
 
-- [Architecture Overview](./Architecture%20Overview.md): the system map, independent roles, communication boundaries, and deployment examples.
-- [Resource Model](./Concepts/Resource%20Model.md): what a portable release contains.
-- [Finding Worlds](./Concepts/Finding%20Worlds.md): Client startup, addresses, search, and indexing.
-- [Platform Services](./Concepts/Platform%20Services.md): shared content, directory, account, and social protocols versus custom gameplay networking.
-- [Worlds and Sessions](./Concepts/Worlds%20and%20Sessions.md): how Worlds run alone or online.
-- [Identity and Profiles](./Concepts/Identity%20and%20Profiles.md): local Profiles, optional federated accounts, friends, and presence.
-- [Collections and Sharing](./Concepts/Collections%20and%20Sharing.md): saved Worlds, Avatars, Items, and visibility controls.
-- [Avatars](./Concepts/Avatars.md), [Items and Ownership](./Concepts/Items%20and%20Ownership.md), and [Overlay Apps](./Concepts/Overlay%20Apps.md): portable content.
-- [Commerce and Usage Rights](./Concepts/Commerce%20and%20Usage%20Rights.md): what a purchase provides, optional proof of rights, and what survives a store closing.
+### 1. The Big Picture
 
-### Build a Client or World
+- [README](./README.md): the spatial Web vision, purpose, and scope of the project.
+- [Start Here](./Start%20Here.md): this concept overview, core principles, and table of contents.
+- [Architecture Overview](./Architecture%20Overview.md): independent components, where they run, and how they connect, including the [system map](./Reference/Diagrams/metaverse-architecture.svg).
 
-- [Client and Runtime](./Client%20Platform/Client%20and%20Runtime.md): isolation, multitasking, and Client Profiles.
-- [Features and Permissions](./Client%20Platform/Features%20and%20Permissions.md): compatibility versus user consent.
-- [Networking](./Client%20Platform/Networking.md): safe binary I/O, transport choice, custom protocols, and reconciliation boundaries.
-- [Publishing and Delivery](./Concepts/Publishing%20and%20Delivery.md): hosting, mirrors, integrity, and private retrieval.
-- [Message Relay](./Concepts/Message%20Relay.md) and [Resource Relay](./Concepts/Resource%20Relay.md): realtime session messages and participant-content delivery.
-- [Graphics and Shaders](./Client%20Platform/Graphics%20and%20Shaders.md) and [Devices and Input](./Client%20Platform/Devices%20and%20Input.md): deeper platform systems.
-- [Software Integration](./Client%20Platform/Software%20Integration.md): pairing external programs, scoped channels, and high-rate binary data.
+### 2. Worlds, People, and Content
 
-### Review trust and interoperability
+- [Finding Worlds](./Concepts/Finding%20Worlds.md): opening the Client, addresses, search, and navigation.
+- [Worlds and Sessions](./Concepts/Worlds%20and%20Sessions.md): local and online Worlds, sessions, and shared state.
+- [Identity and Profiles](./Concepts/Identity%20and%20Profiles.md): local and federated identities, friends, presence, and optional external verification.
+- [Collections and Sharing](./Concepts/Collections%20and%20Sharing.md): saving content and deciding who can see personal information.
+- [Resource Model](./Concepts/Resource%20Model.md): the shared structure and lifecycle of portable content.
+- [Avatars](./Concepts/Avatars.md): participant representation, rigs, animation, and sandboxed behavior.
+- [Items and Ownership](./Concepts/Items%20and%20Ownership.md): portable objects and dynamic content, placement, behavior, and World integration.
+- [Overlay Apps](./Concepts/Overlay%20Apps.md): independent user tools that can remain available across Worlds.
 
-- [Security and Privacy](./Trust/Security%20and%20Privacy.md): threats and security invariants.
-- [Safety and Moderation](./Trust/Safety%20and%20Moderation.md): protection from people and harmful experiences.
-- [Conformance and Governance](./Reference/Conformance%20and%20Governance.md): profiles, registries, tests, and change control.
-- [Web Platform Alignment](./Reference/Web%20Platform%20Alignment.md): modern web references, reuse decisions, and missing application capabilities.
-- [Glossary](./Reference/Glossary.md): canonical terminology.
+### 3. Running Content Safely
+
+- [Client and Runtime](./Client%20Platform/Client%20and%20Runtime.md): isolation, multiple open Worlds, lifecycle, and AR presentation.
+- [Features and Permissions](./Client%20Platform/Features%20and%20Permissions.md): device compatibility, live availability, and user-approved access.
+- [Security and Privacy](./Trust/Security%20and%20Privacy.md): trust boundaries, attacks, data protection, and residual risks.
+- [Safety and Moderation](./Trust/Safety%20and%20Moderation.md): local protection, World rules, content labels, and reporting.
+
+### 4. Publishing and Online Services
+
+- [Publishing and Delivery](./Concepts/Publishing%20and%20Delivery.md): hosting, mirrors, content validation, and private retrieval.
+- [Platform Services](./Concepts/Platform%20Services.md): shared content, directory, account, and social contracts.
+- [Networking](./Client%20Platform/Networking.md): safe binary I/O, transport choice, and developer-defined application protocols.
+- [Message Relay](./Concepts/Message%20Relay.md): realtime session messages and adaptable state forwarding.
+- [Resource Relay](./Concepts/Resource%20Relay.md): participant-content delivery, local uploads, caching, and privacy.
+- [Commerce and Usage Rights](./Concepts/Commerce%20and%20Usage%20Rights.md): purchase models, optional rights evidence, and service-independent backups.
+
+### 5. Graphics, Devices, and External Software
+
+- [Graphics and Shaders](./Client%20Platform/Graphics%20and%20Shaders.md): portable rendering, custom shaders, compilation, and optional advanced features.
+- [Devices and Input](./Client%20Platform/Devices%20and%20Input.md): typed signals, custom hardware, live device changes, and safe outputs.
+- [Software Integration](./Client%20Platform/Software%20Integration.md): external applications, scoped channels, and high-rate binary data.
+
+### 6. Reference and Further Development
+
+- [Glossary](./Reference/Glossary.md): canonical terms to look up whenever needed.
+- [Web Platform Alignment](./Reference/Web%20Platform%20Alignment.md): existing standards, reuse decisions, and remaining coverage gaps.
+- [Conformance and Governance](./Reference/Conformance%20and%20Governance.md): compatibility tests, extension registries, and the specification process.
+- [Open Decisions and Roadmap](./Reference/Open%20Decisions%20and%20Roadmap.md): settled directions, candidate technologies, unresolved questions, and development milestones.
+
+### 7. Project Information and Contributor Guidance
+
+- [Authors and Attribution](./AUTHORS.md): project authors, AI assistance, and crediting this work.
+- [License](./LICENSE.md): terms for using and adapting the documentation and original diagrams.
+- [Contributing](./CONTRIBUTING.md): proposing changes and maintaining shared GitHub and Obsidian documentation.
+- [AI Editing Instructions](./AGENTS.md): workspace rules for coding assistants, not requirements of the metaverse standard.
