@@ -1,0 +1,24 @@
+# Local Obsidian configuration, plugins, caches, and trash.
+.obsidian/
+.trash/
+
+# Local editor and operating-system state.
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+*.swo
+
+# Credentials and machine-local environment overrides.
+.env
+.env.*
+!.env.example
+
+# Local Python/tool caches; generated previews are not source documents.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
